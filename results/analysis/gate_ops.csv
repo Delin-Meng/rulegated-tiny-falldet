@@ -1,0 +1,13 @@
+﻿Step,Operation,Per sample,Full window (x50),Streaming (x10)
+"|a|: square x, y, z",mul,3,150,30
+|a|: sum,add,2,100,20
+|a|: square root,sqrt,1,50,10
+"|w|: square x, y, z",mul,3,150,30
+|w|: sum,add,2,100,20
+|w|: square root,sqrt,1,50,10
+tilt: -a_y / |a|,div,1,50,10
+tilt: arccos (+ to degrees),acos,1,50,10
+"window max of |a|, |w|, tilt",compare,,147,147
+3 threshold comparisons,compare,,3,3
+AND of the 3 conditions,and,,2,2
+Total,,,852,292

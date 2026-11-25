@@ -1,0 +1,15 @@
+﻿Model,Weights,Parameters,"Parameter bytes FP32 (B, x4)","Parameter bytes INT8 (B, x1)",Constant data .tflite FP32 (B),Constant data .tflite INT8 (B),.tflite file FP32 (B),.tflite file INT8 (B),INT8 mode,Peak activation FP32 (B),Peak activation INT8 (B),Operators in graph
+TinyCNN series,trained,546,2184,546,2192,608,5200,4368,full INT8,20400,5100,5
+TinyCNN series (valid),untrained,546,2184,546,2152,600,4468,3680,full INT8,12400,3100,5
+TinyTCN,trained,458,1832,458,2080,928,14228,16744,full INT8,7024,1756,32
+TinySSM,trained,378,1512,378,4280,1288,13516,13000,full INT8,9136,2284,28
+CNN-LSTM,trained,1426,5704,1426,5764,1708,149676,320024,full INT8,9664,2416,751
+TinyEEGNet,trained,338,1352,338,1152,384,6544,7120,full INT8,7600,1900,9
+TinyTransformer,trained,946,3784,946,3912,1266,20476,22312,full INT8,3600,900,51
+Musci 2021 (LSTM),trained,2322,9288,2322,9204,2644,155764,332800,full INT8,12592,3148,752
+TinyTCN (4 ch),untrained,166,664,166,808,504,10524,13160,full INT8,4112,1028,32
+TinyTCN (6 ch),untrained,296,1184,296,1296,696,11056,13776,full INT8,5568,1392,32
+TinyTCN (12 ch),untrained,878,3512,878,3528,1464,13332,15688,full INT8,9936,2484,32
+TinyTCN (16 ch),untrained,1426,5704,1426,5656,2136,15460,17096,full INT8,12848,3212,32
+TinyTCN (2 blocks),untrained,266,1064,266,1128,536,7604,9192,full INT8,6256,1564,20
+TinyTCN (3 blocks),untrained,362,1448,362,1520,728,9660,11792,full INT8,6512,1628,26

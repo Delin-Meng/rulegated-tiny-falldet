@@ -1,0 +1,87 @@
+{
+ "mode": "full INT8",
+ "calibration": {
+  "windows": 1000,
+  "drawn from": "the model's 254934 training windows",
+  "random seed": 0,
+  "clip percentile of |z|": 99.9,
+  "clip value (z units)": 8.717133522033691,
+  "fall windows in the calibration set": 97,
+  "fall window share (%)": 9.700000000000001,
+  "subjects": [
+   "SA06",
+   "SA07",
+   "SA08",
+   "SA09",
+   "SA10",
+   "SA11",
+   "SA12",
+   "SA13",
+   "SA14",
+   "SA15",
+   "SA16",
+   "SA17",
+   "SA18",
+   "SA19",
+   "SA20",
+   "SA21",
+   "SA22",
+   "SA23",
+   "SA24",
+   "SA25",
+   "SA26",
+   "SA27",
+   "SA28",
+   "SA29",
+   "SA30",
+   "SA31"
+  ]
+ },
+ "input": {
+  "dtype": "int8",
+  "scale": 0.06836967170238495,
+  "zero point": 0,
+  "shape": [
+   1,
+   6,
+   50,
+   1
+  ]
+ },
+ "output": {
+  "dtype": "int8",
+  "scale": 0.00390625,
+  "zero point": -128,
+  "shape": [
+   1,
+   2
+  ]
+ },
+ "input preprocessing": {
+  "formula": "q = clip(round(((x - mean) / std) / input_scale + input_zero_point), -128, 127)",
+  "channels": [
+   "AccX",
+   "AccY",
+   "AccZ",
+   "GyrX",
+   "GyrY",
+   "GyrZ"
+  ],
+  "mean": [
+   0.014227727428078651,
+   -0.8626190423965454,
+   0.005809073802083731,
+   -1.3086636066436768,
+   8.835456848144531,
+   -0.06088090315461159
+  ],
+  "std": [
+   0.3004022538661957,
+   0.4440799951553345,
+   0.4173414707183838,
+   39.17546844482422,
+   48.002376556396484,
+   23.265613555908203
+  ]
+ }
+}

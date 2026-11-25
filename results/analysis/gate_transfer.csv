@@ -1,0 +1,5 @@
+﻿Thresholds tuned on,Applied to,acc (g),gyr (deg/s),tilt (deg),"Pass rate, all windows (%)","Pass rate, ADL windows (%)",Fall trials kept (%)
+kfall,kfall,1.75,100.0,80.0,9.54,6.49,100.0
+kfall,sisfall,1.75,100.0,80.0,14.49,14.82,99.94
+sisfall,kfall,1.5,100.0,80.0,9.77,6.68,100.0
+sisfall,sisfall,1.5,100.0,80.0,14.81,15.02,100.0

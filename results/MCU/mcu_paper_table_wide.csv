@@ -1,0 +1,8 @@
+model,family,parameters,operators,tflite_macs,tool_macc,weights_KB,activations_KB,flash_total_KB,ram_total_KB,F401RE_84MHz_ms,L4R9I_120MHz_ms,G474RE_170MHz_ms,U3C5ZI_96MHz_ms,F401RE_cycles,deployable_boards_of_4
+TinyTCN,dilated conv,458,32,20016,27518,0.8,4.0,25.0,6.1,5.061,3.779,2.844,3.342,425130.0,4
+TinyCNN,CNN,546,5,153616,156064,0.6,5.7,16.5,6.8,7.591,6.140,4.384,1.468,637627.0,4
+TinyEEGNet,depthwise-separable CNN,338,9,23152,23716,0.4,1.8,26.1,3.0,3.006,2.641,1.851,tool error,252542.0,3
+TinySSM,state-space,378,28,48816,51838,1.2,3.2,30.6,5.8,5.085,3.975,2.996,1.949,427131.0,4
+TinyTransformer,attention,946,55,9136,45882,1.1,1.5,47.6,10.6,3.664,2.841,2.075,3.115,307762.0,4
+CNN-LSTM,recurrent,1426,751,66648,81658,2.0,1.7,360.8,156.1,ND,ND,ND,13.878,,1
+Musci LSTM,recurrent,2322,752,106208,127766,3.0,1.6,365.3,156.5,ND,ND,ND,18.221,,1

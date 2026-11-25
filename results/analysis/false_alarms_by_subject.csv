@@ -1,0 +1,491 @@
+﻿Dataset,Model,Subject,ADL trials (all runs),Passed by the gate (>= 1 window),Passed by the gate (%),"False alarms, main setting","False alarms, main setting (%)","False alarms, ungated FP32 tuned","False alarms, ungated FP32 tuned (%)",Group
+kfall,CNN-LSTM,SA06,425,75,17.65,3,0.71,2,0.47,young
+kfall,CNN-LSTM,SA07,425,100,23.53,0,0.0,36,8.47,young
+kfall,CNN-LSTM,SA08,445,90,20.22,1,0.22,2,0.45,young
+kfall,CNN-LSTM,SA09,390,110,28.21,0,0.0,1,0.26,young
+kfall,CNN-LSTM,SA10,420,120,28.57,9,2.14,3,0.71,young
+kfall,CNN-LSTM,SA11,430,80,18.6,2,0.47,2,0.47,young
+kfall,CNN-LSTM,SA12,325,65,20.0,0,0.0,1,0.31,young
+kfall,CNN-LSTM,SA13,425,65,15.29,0,0.0,3,0.71,young
+kfall,CNN-LSTM,SA14,450,125,27.78,11,2.44,14,3.11,young
+kfall,CNN-LSTM,SA15,435,115,26.44,17,3.91,24,5.52,young
+kfall,CNN-LSTM,SA16,435,105,24.14,10,2.3,13,2.99,young
+kfall,CNN-LSTM,SA17,435,110,25.29,0,0.0,6,1.38,young
+kfall,CNN-LSTM,SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,CNN-LSTM,SA19,425,155,36.47,27,6.35,26,6.12,young
+kfall,CNN-LSTM,SA20,420,115,27.38,2,0.48,4,0.95,young
+kfall,CNN-LSTM,SA21,450,85,18.89,0,0.0,1,0.22,young
+kfall,CNN-LSTM,SA22,435,105,24.14,2,0.46,1,0.23,young
+kfall,CNN-LSTM,SA23,435,120,27.59,27,6.21,41,9.43,young
+kfall,CNN-LSTM,SA24,425,95,22.35,4,0.94,1,0.24,young
+kfall,CNN-LSTM,SA25,440,85,19.32,7,1.59,2,0.45,young
+kfall,CNN-LSTM,SA26,435,100,22.99,0,0.0,1,0.23,young
+kfall,CNN-LSTM,SA27,425,105,24.71,0,0.0,0,0.0,young
+kfall,CNN-LSTM,SA28,430,100,23.26,0,0.0,1,0.23,young
+kfall,CNN-LSTM,SA29,420,155,36.9,5,1.19,10,2.38,young
+kfall,CNN-LSTM,SA30,435,160,36.78,21,4.83,30,6.9,young
+kfall,CNN-LSTM,SA31,430,115,26.74,4,0.93,1,0.23,young
+kfall,CNN-LSTM,SA32,440,110,25.0,2,0.45,4,0.91,young
+kfall,CNN-LSTM,SA33,440,145,32.95,10,2.27,8,1.82,young
+kfall,CNN-LSTM,SA35,430,100,23.26,1,0.23,0,0.0,young
+kfall,CNN-LSTM,SA36,425,115,27.06,15,3.53,20,4.71,young
+kfall,CNN-LSTM,SA37,400,80,20.0,0,0.0,7,1.75,young
+kfall,CNN-LSTM,SA38,440,110,25.0,2,0.45,20,4.55,young
+kfall,Musci 2021 (LSTM),SA06,425,75,17.65,5,1.18,0,0.0,young
+kfall,Musci 2021 (LSTM),SA07,425,100,23.53,4,0.94,20,4.71,young
+kfall,Musci 2021 (LSTM),SA08,445,90,20.22,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA09,390,110,28.21,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA10,420,120,28.57,0,0.0,3,0.71,young
+kfall,Musci 2021 (LSTM),SA11,430,80,18.6,5,1.16,0,0.0,young
+kfall,Musci 2021 (LSTM),SA12,325,65,20.0,3,0.92,0,0.0,young
+kfall,Musci 2021 (LSTM),SA13,425,65,15.29,10,2.35,0,0.0,young
+kfall,Musci 2021 (LSTM),SA14,450,125,27.78,8,1.78,7,1.56,young
+kfall,Musci 2021 (LSTM),SA15,435,115,26.44,17,3.91,20,4.6,young
+kfall,Musci 2021 (LSTM),SA16,435,105,24.14,7,1.61,2,0.46,young
+kfall,Musci 2021 (LSTM),SA17,435,110,25.29,7,1.61,0,0.0,young
+kfall,Musci 2021 (LSTM),SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA19,425,155,36.47,15,3.53,6,1.41,young
+kfall,Musci 2021 (LSTM),SA20,420,115,27.38,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA21,450,85,18.89,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA22,435,105,24.14,2,0.46,0,0.0,young
+kfall,Musci 2021 (LSTM),SA23,435,120,27.59,39,8.97,39,8.97,young
+kfall,Musci 2021 (LSTM),SA24,425,95,22.35,3,0.71,0,0.0,young
+kfall,Musci 2021 (LSTM),SA25,440,85,19.32,1,0.23,0,0.0,young
+kfall,Musci 2021 (LSTM),SA26,435,100,22.99,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA27,425,105,24.71,3,0.71,1,0.24,young
+kfall,Musci 2021 (LSTM),SA28,430,100,23.26,2,0.47,0,0.0,young
+kfall,Musci 2021 (LSTM),SA29,420,155,36.9,7,1.67,6,1.43,young
+kfall,Musci 2021 (LSTM),SA30,435,160,36.78,14,3.22,9,2.07,young
+kfall,Musci 2021 (LSTM),SA31,430,115,26.74,10,2.33,1,0.23,young
+kfall,Musci 2021 (LSTM),SA32,440,110,25.0,0,0.0,0,0.0,young
+kfall,Musci 2021 (LSTM),SA33,440,145,32.95,13,2.95,5,1.14,young
+kfall,Musci 2021 (LSTM),SA35,430,100,23.26,0,0.0,5,1.16,young
+kfall,Musci 2021 (LSTM),SA36,425,115,27.06,13,3.06,8,1.88,young
+kfall,Musci 2021 (LSTM),SA37,400,80,20.0,7,1.75,1,0.25,young
+kfall,Musci 2021 (LSTM),SA38,440,110,25.0,1,0.23,3,0.68,young
+kfall,TinyCNN series,SA06,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA07,425,100,23.53,0,0.0,8,1.88,young
+kfall,TinyCNN series,SA08,445,90,20.22,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA09,390,110,28.21,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA10,420,120,28.57,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA11,430,80,18.6,4,0.93,3,0.7,young
+kfall,TinyCNN series,SA12,325,65,20.0,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA13,425,65,15.29,1,0.24,0,0.0,young
+kfall,TinyCNN series,SA14,450,125,27.78,8,1.78,6,1.33,young
+kfall,TinyCNN series,SA15,435,115,26.44,27,6.21,28,6.44,young
+kfall,TinyCNN series,SA16,435,105,24.14,8,1.84,5,1.15,young
+kfall,TinyCNN series,SA17,435,110,25.29,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA19,425,155,36.47,40,9.41,33,7.76,young
+kfall,TinyCNN series,SA20,420,115,27.38,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA21,450,85,18.89,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA22,435,105,24.14,1,0.23,0,0.0,young
+kfall,TinyCNN series,SA23,435,120,27.59,34,7.82,48,11.03,young
+kfall,TinyCNN series,SA24,425,95,22.35,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA25,440,85,19.32,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA26,435,100,22.99,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA27,425,105,24.71,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA28,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA29,420,155,36.9,5,1.19,4,0.95,young
+kfall,TinyCNN series,SA30,435,160,36.78,24,5.52,30,6.9,young
+kfall,TinyCNN series,SA31,430,115,26.74,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA32,440,110,25.0,5,1.14,2,0.45,young
+kfall,TinyCNN series,SA33,440,145,32.95,11,2.5,7,1.59,young
+kfall,TinyCNN series,SA35,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA36,425,115,27.06,5,1.18,3,0.71,young
+kfall,TinyCNN series,SA37,400,80,20.0,0,0.0,0,0.0,young
+kfall,TinyCNN series,SA38,440,110,25.0,1,0.23,6,1.36,young
+kfall,TinyEEGNet,SA06,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA07,425,100,23.53,1,0.24,11,2.59,young
+kfall,TinyEEGNet,SA08,445,90,20.22,1,0.22,0,0.0,young
+kfall,TinyEEGNet,SA09,390,110,28.21,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA10,420,120,28.57,3,0.71,1,0.24,young
+kfall,TinyEEGNet,SA11,430,80,18.6,3,0.7,2,0.47,young
+kfall,TinyEEGNet,SA12,325,65,20.0,2,0.62,2,0.62,young
+kfall,TinyEEGNet,SA13,425,65,15.29,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA14,450,125,27.78,2,0.44,2,0.44,young
+kfall,TinyEEGNet,SA15,435,115,26.44,18,4.14,21,4.83,young
+kfall,TinyEEGNet,SA16,435,105,24.14,10,2.3,5,1.15,young
+kfall,TinyEEGNet,SA17,435,110,25.29,1,0.23,0,0.0,young
+kfall,TinyEEGNet,SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA19,425,155,36.47,23,5.41,15,3.53,young
+kfall,TinyEEGNet,SA20,420,115,27.38,0,0.0,1,0.24,young
+kfall,TinyEEGNet,SA21,450,85,18.89,1,0.22,1,0.22,young
+kfall,TinyEEGNet,SA22,435,105,24.14,1,0.23,0,0.0,young
+kfall,TinyEEGNet,SA23,435,120,27.59,24,5.52,33,7.59,young
+kfall,TinyEEGNet,SA24,425,95,22.35,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA25,440,85,19.32,1,0.23,0,0.0,young
+kfall,TinyEEGNet,SA26,435,100,22.99,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA27,425,105,24.71,1,0.24,1,0.24,young
+kfall,TinyEEGNet,SA28,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA29,420,155,36.9,2,0.48,3,0.71,young
+kfall,TinyEEGNet,SA30,435,160,36.78,21,4.83,24,5.52,young
+kfall,TinyEEGNet,SA31,430,115,26.74,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA32,440,110,25.0,1,0.23,1,0.23,young
+kfall,TinyEEGNet,SA33,440,145,32.95,13,2.95,11,2.5,young
+kfall,TinyEEGNet,SA35,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA36,425,115,27.06,5,1.18,7,1.65,young
+kfall,TinyEEGNet,SA37,400,80,20.0,0,0.0,0,0.0,young
+kfall,TinyEEGNet,SA38,440,110,25.0,0,0.0,10,2.27,young
+kfall,TinySSM,SA06,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinySSM,SA07,425,100,23.53,0,0.0,30,7.06,young
+kfall,TinySSM,SA08,445,90,20.22,0,0.0,0,0.0,young
+kfall,TinySSM,SA09,390,110,28.21,0,0.0,0,0.0,young
+kfall,TinySSM,SA10,420,120,28.57,0,0.0,1,0.24,young
+kfall,TinySSM,SA11,430,80,18.6,3,0.7,2,0.47,young
+kfall,TinySSM,SA12,325,65,20.0,0,0.0,0,0.0,young
+kfall,TinySSM,SA13,425,65,15.29,3,0.71,1,0.24,young
+kfall,TinySSM,SA14,450,125,27.78,5,1.11,2,0.44,young
+kfall,TinySSM,SA15,435,115,26.44,18,4.14,18,4.14,young
+kfall,TinySSM,SA16,435,105,24.14,5,1.15,5,1.15,young
+kfall,TinySSM,SA17,435,110,25.29,1,0.23,1,0.23,young
+kfall,TinySSM,SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinySSM,SA19,425,155,36.47,18,4.24,13,3.06,young
+kfall,TinySSM,SA20,420,115,27.38,0,0.0,0,0.0,young
+kfall,TinySSM,SA21,450,85,18.89,1,0.22,0,0.0,young
+kfall,TinySSM,SA22,435,105,24.14,0,0.0,0,0.0,young
+kfall,TinySSM,SA23,435,120,27.59,27,6.21,42,9.66,young
+kfall,TinySSM,SA24,425,95,22.35,0,0.0,0,0.0,young
+kfall,TinySSM,SA25,440,85,19.32,0,0.0,0,0.0,young
+kfall,TinySSM,SA26,435,100,22.99,0,0.0,0,0.0,young
+kfall,TinySSM,SA27,425,105,24.71,0,0.0,0,0.0,young
+kfall,TinySSM,SA28,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinySSM,SA29,420,155,36.9,5,1.19,4,0.95,young
+kfall,TinySSM,SA30,435,160,36.78,26,5.98,20,4.6,young
+kfall,TinySSM,SA31,430,115,26.74,0,0.0,0,0.0,young
+kfall,TinySSM,SA32,440,110,25.0,0,0.0,0,0.0,young
+kfall,TinySSM,SA33,440,145,32.95,8,1.82,10,2.27,young
+kfall,TinySSM,SA35,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinySSM,SA36,425,115,27.06,1,0.24,4,0.94,young
+kfall,TinySSM,SA37,400,80,20.0,0,0.0,1,0.25,young
+kfall,TinySSM,SA38,440,110,25.0,0,0.0,12,2.73,young
+kfall,TinyTCN,SA06,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyTCN,SA07,425,100,23.53,0,0.0,19,4.47,young
+kfall,TinyTCN,SA08,445,90,20.22,0,0.0,0,0.0,young
+kfall,TinyTCN,SA09,390,110,28.21,0,0.0,0,0.0,young
+kfall,TinyTCN,SA10,420,120,28.57,2,0.48,1,0.24,young
+kfall,TinyTCN,SA11,430,80,18.6,2,0.47,1,0.23,young
+kfall,TinyTCN,SA12,325,65,20.0,0,0.0,0,0.0,young
+kfall,TinyTCN,SA13,425,65,15.29,0,0.0,0,0.0,young
+kfall,TinyTCN,SA14,450,125,27.78,1,0.22,1,0.22,young
+kfall,TinyTCN,SA15,435,115,26.44,18,4.14,17,3.91,young
+kfall,TinyTCN,SA16,435,105,24.14,9,2.07,7,1.61,young
+kfall,TinyTCN,SA17,435,110,25.29,2,0.46,1,0.23,young
+kfall,TinyTCN,SA18,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyTCN,SA19,425,155,36.47,24,5.65,17,4.0,young
+kfall,TinyTCN,SA20,420,115,27.38,0,0.0,0,0.0,young
+kfall,TinyTCN,SA21,450,85,18.89,0,0.0,1,0.22,young
+kfall,TinyTCN,SA22,435,105,24.14,0,0.0,0,0.0,young
+kfall,TinyTCN,SA23,435,120,27.59,21,4.83,30,6.9,young
+kfall,TinyTCN,SA24,425,95,22.35,0,0.0,0,0.0,young
+kfall,TinyTCN,SA25,440,85,19.32,0,0.0,0,0.0,young
+kfall,TinyTCN,SA26,435,100,22.99,0,0.0,0,0.0,young
+kfall,TinyTCN,SA27,425,105,24.71,0,0.0,0,0.0,young
+kfall,TinyTCN,SA28,430,100,23.26,0,0.0,0,0.0,young
+kfall,TinyTCN,SA29,420,155,36.9,1,0.24,0,0.0,young
+kfall,TinyTCN,SA30,435,160,36.78,21,4.83,18,4.14,young
+kfall,TinyTCN,SA31,430,115,26.74,0,0.0,0,0.0,young
+kfall,TinyTCN,SA32,440,110,25.0,0,0.0,0,0.0,young
+kfall,TinyTCN,SA33,440,145,32.95,9,2.05,9,2.05,young
+kfall,TinyTCN,SA35,430,100,23.26,1,0.23,1,0.23,young
+kfall,TinyTCN,SA36,425,115,27.06,9,2.12,11,2.59,young
+kfall,TinyTCN,SA37,400,80,20.0,0,0.0,0,0.0,young
+kfall,TinyTCN,SA38,440,110,25.0,0,0.0,10,2.27,young
+kfall,TinyTransformer,SA06,425,75,17.65,0,0.0,0,0.0,young
+kfall,TinyTransformer,SA07,425,100,23.53,1,0.24,24,5.65,young
+kfall,TinyTransformer,SA08,445,90,20.22,0,0.0,1,0.22,young
+kfall,TinyTransformer,SA09,390,110,28.21,3,0.77,1,0.26,young
+kfall,TinyTransformer,SA10,420,120,28.57,3,0.71,4,0.95,young
+kfall,TinyTransformer,SA11,430,80,18.6,17,3.95,2,0.47,young
+kfall,TinyTransformer,SA12,325,65,20.0,1,0.31,1,0.31,young
+kfall,TinyTransformer,SA13,425,65,15.29,0,0.0,0,0.0,young
+kfall,TinyTransformer,SA14,450,125,27.78,38,8.44,23,5.11,young
+kfall,TinyTransformer,SA15,435,115,26.44,11,2.53,12,2.76,young
+kfall,TinyTransformer,SA16,435,105,24.14,13,2.99,13,2.99,young
+kfall,TinyTransformer,SA17,435,110,25.29,7,1.61,1,0.23,young
+kfall,TinyTransformer,SA18,425,75,17.65,0,0.0,1,0.24,young
+kfall,TinyTransformer,SA19,425,155,36.47,52,12.24,33,7.76,young
+kfall,TinyTransformer,SA20,420,115,27.38,2,0.48,8,1.9,young
+kfall,TinyTransformer,SA21,450,85,18.89,0,0.0,0,0.0,young
+kfall,TinyTransformer,SA22,435,105,24.14,0,0.0,0,0.0,young
+kfall,TinyTransformer,SA23,435,120,27.59,40,9.2,41,9.43,young
+kfall,TinyTransformer,SA24,425,95,22.35,0,0.0,3,0.71,young
+kfall,TinyTransformer,SA25,440,85,19.32,1,0.23,2,0.45,young
+kfall,TinyTransformer,SA26,435,100,22.99,18,4.14,0,0.0,young
+kfall,TinyTransformer,SA27,425,105,24.71,0,0.0,1,0.24,young
+kfall,TinyTransformer,SA28,430,100,23.26,1,0.23,0,0.0,young
+kfall,TinyTransformer,SA29,420,155,36.9,4,0.95,2,0.48,young
+kfall,TinyTransformer,SA30,435,160,36.78,42,9.66,26,5.98,young
+kfall,TinyTransformer,SA31,430,115,26.74,0,0.0,0,0.0,young
+kfall,TinyTransformer,SA32,440,110,25.0,23,5.23,4,0.91,young
+kfall,TinyTransformer,SA33,440,145,32.95,7,1.59,8,1.82,young
+kfall,TinyTransformer,SA35,430,100,23.26,0,0.0,4,0.93,young
+kfall,TinyTransformer,SA36,425,115,27.06,11,2.59,20,4.71,young
+kfall,TinyTransformer,SA37,400,80,20.0,1,0.25,0,0.0,young
+kfall,TinyTransformer,SA38,440,110,25.0,2,0.45,15,3.41,young
+sisfall,CNN-LSTM,SA01,395,115,29.11,8,2.03,0,0.0,young
+sisfall,CNN-LSTM,SA02,395,160,40.51,29,7.34,14,3.54,young
+sisfall,CNN-LSTM,SA03,395,190,48.1,36,9.11,23,5.82,young
+sisfall,CNN-LSTM,SA04,395,180,45.57,30,7.59,23,5.82,young
+sisfall,CNN-LSTM,SA05,395,180,45.57,22,5.57,21,5.32,young
+sisfall,CNN-LSTM,SA06,395,175,44.3,18,4.56,16,4.05,young
+sisfall,CNN-LSTM,SA07,395,110,27.85,17,4.3,14,3.54,young
+sisfall,CNN-LSTM,SA08,395,195,49.37,36,9.11,29,7.34,young
+sisfall,CNN-LSTM,SA09,395,145,36.71,4,1.01,7,1.77,young
+sisfall,CNN-LSTM,SA10,395,140,35.44,1,0.25,1,0.25,young
+sisfall,CNN-LSTM,SA11,395,140,35.44,45,11.39,35,8.86,young
+sisfall,CNN-LSTM,SA12,395,120,30.38,7,1.77,6,1.52,young
+sisfall,CNN-LSTM,SA13,395,145,36.71,2,0.51,1,0.25,young
+sisfall,CNN-LSTM,SA14,395,150,37.97,7,1.77,4,1.01,young
+sisfall,CNN-LSTM,SA15,370,120,32.43,24,6.49,7,1.89,young
+sisfall,CNN-LSTM,SA16,395,120,30.38,1,0.25,1,0.25,young
+sisfall,CNN-LSTM,SA17,390,155,39.74,7,1.79,2,0.51,young
+sisfall,CNN-LSTM,SA18,395,135,34.18,8,2.03,1,0.25,young
+sisfall,CNN-LSTM,SA19,395,105,26.58,7,1.77,2,0.51,young
+sisfall,CNN-LSTM,SA20,385,105,27.27,0,0.0,0,0.0,young
+sisfall,CNN-LSTM,SA21,395,195,49.37,29,7.34,13,3.29,young
+sisfall,CNN-LSTM,SA22,395,170,43.04,20,5.06,20,5.06,young
+sisfall,CNN-LSTM,SA23,395,110,27.85,7,1.77,3,0.76,young
+sisfall,CNN-LSTM,SE01,295,35,11.86,4,1.36,6,2.03,elderly
+sisfall,CNN-LSTM,SE02,240,55,22.92,5,2.08,5,2.08,elderly
+sisfall,CNN-LSTM,SE03,295,80,27.12,23,7.8,25,8.47,elderly
+sisfall,CNN-LSTM,SE04,295,40,13.56,5,1.69,19,6.44,elderly
+sisfall,CNN-LSTM,SE05,295,35,11.86,4,1.36,4,1.36,elderly
+sisfall,CNN-LSTM,SE06,395,100,25.32,0,0.0,0,0.0,elderly
+sisfall,CNN-LSTM,SE07,295,70,23.73,17,5.76,23,7.8,elderly
+sisfall,CNN-LSTM,SE08,295,100,33.9,55,18.64,64,21.69,elderly
+sisfall,CNN-LSTM,SE09,295,110,37.29,14,4.75,8,2.71,elderly
+sisfall,CNN-LSTM,SE10,295,70,23.73,18,6.1,16,5.42,elderly
+sisfall,CNN-LSTM,SE11,295,60,20.34,9,3.05,2,0.68,elderly
+sisfall,CNN-LSTM,SE12,295,85,28.81,13,4.41,5,1.69,elderly
+sisfall,CNN-LSTM,SE13,295,40,13.56,1,0.34,0,0.0,elderly
+sisfall,CNN-LSTM,SE14,295,75,25.42,1,0.34,0,0.0,elderly
+sisfall,CNN-LSTM,SE15,290,85,29.31,3,1.03,4,1.38,elderly
+sisfall,Musci 2021 (LSTM),SA01,395,115,29.11,14,3.54,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA02,395,160,40.51,18,4.56,7,1.77,young
+sisfall,Musci 2021 (LSTM),SA03,395,190,48.1,19,4.81,20,5.06,young
+sisfall,Musci 2021 (LSTM),SA04,395,180,45.57,45,11.39,8,2.03,young
+sisfall,Musci 2021 (LSTM),SA05,395,180,45.57,39,9.87,7,1.77,young
+sisfall,Musci 2021 (LSTM),SA06,395,175,44.3,23,5.82,15,3.8,young
+sisfall,Musci 2021 (LSTM),SA07,395,110,27.85,52,13.16,5,1.27,young
+sisfall,Musci 2021 (LSTM),SA08,395,195,49.37,43,10.89,25,6.33,young
+sisfall,Musci 2021 (LSTM),SA09,395,145,36.71,28,7.09,1,0.25,young
+sisfall,Musci 2021 (LSTM),SA10,395,140,35.44,13,3.29,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA11,395,140,35.44,35,8.86,27,6.84,young
+sisfall,Musci 2021 (LSTM),SA12,395,120,30.38,4,1.01,1,0.25,young
+sisfall,Musci 2021 (LSTM),SA13,395,145,36.71,36,9.11,1,0.25,young
+sisfall,Musci 2021 (LSTM),SA14,395,150,37.97,27,6.84,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA15,370,120,32.43,13,3.51,14,3.78,young
+sisfall,Musci 2021 (LSTM),SA16,395,120,30.38,8,2.03,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA17,390,155,39.74,2,0.51,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA18,395,135,34.18,19,4.81,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA19,395,105,26.58,10,2.53,2,0.51,young
+sisfall,Musci 2021 (LSTM),SA20,385,105,27.27,16,4.16,0,0.0,young
+sisfall,Musci 2021 (LSTM),SA21,395,195,49.37,8,2.03,1,0.25,young
+sisfall,Musci 2021 (LSTM),SA22,395,170,43.04,65,16.46,10,2.53,young
+sisfall,Musci 2021 (LSTM),SA23,395,110,27.85,9,2.28,0,0.0,young
+sisfall,Musci 2021 (LSTM),SE01,295,35,11.86,4,1.36,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE02,240,55,22.92,14,5.83,5,2.08,elderly
+sisfall,Musci 2021 (LSTM),SE03,295,80,27.12,26,8.81,8,2.71,elderly
+sisfall,Musci 2021 (LSTM),SE04,295,40,13.56,1,0.34,1,0.34,elderly
+sisfall,Musci 2021 (LSTM),SE05,295,35,11.86,10,3.39,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE06,395,100,25.32,13,3.29,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE07,295,70,23.73,3,1.02,14,4.75,elderly
+sisfall,Musci 2021 (LSTM),SE08,295,100,33.9,33,11.19,63,21.36,elderly
+sisfall,Musci 2021 (LSTM),SE09,295,110,37.29,12,4.07,1,0.34,elderly
+sisfall,Musci 2021 (LSTM),SE10,295,70,23.73,4,1.36,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE11,295,60,20.34,11,3.73,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE12,295,85,28.81,15,5.08,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE13,295,40,13.56,1,0.34,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE14,295,75,25.42,10,3.39,0,0.0,elderly
+sisfall,Musci 2021 (LSTM),SE15,290,85,29.31,4,1.38,0,0.0,elderly
+sisfall,TinyCNN series,SA01,395,115,29.11,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA02,395,160,40.51,14,3.54,5,1.27,young
+sisfall,TinyCNN series,SA03,395,190,48.1,14,3.54,10,2.53,young
+sisfall,TinyCNN series,SA04,395,180,45.57,4,1.01,2,0.51,young
+sisfall,TinyCNN series,SA05,395,180,45.57,4,1.01,11,2.78,young
+sisfall,TinyCNN series,SA06,395,175,44.3,19,4.81,9,2.28,young
+sisfall,TinyCNN series,SA07,395,110,27.85,1,0.25,4,1.01,young
+sisfall,TinyCNN series,SA08,395,195,49.37,21,5.32,13,3.29,young
+sisfall,TinyCNN series,SA09,395,145,36.71,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA10,395,140,35.44,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA11,395,140,35.44,32,8.1,28,7.09,young
+sisfall,TinyCNN series,SA12,395,120,30.38,0,0.0,1,0.25,young
+sisfall,TinyCNN series,SA13,395,145,36.71,1,0.25,1,0.25,young
+sisfall,TinyCNN series,SA14,395,150,37.97,1,0.25,0,0.0,young
+sisfall,TinyCNN series,SA15,370,120,32.43,13,3.51,4,1.08,young
+sisfall,TinyCNN series,SA16,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA17,390,155,39.74,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA18,395,135,34.18,2,0.51,0,0.0,young
+sisfall,TinyCNN series,SA19,395,105,26.58,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA20,385,105,27.27,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SA21,395,195,49.37,5,1.27,4,1.01,young
+sisfall,TinyCNN series,SA22,395,170,43.04,4,1.01,4,1.01,young
+sisfall,TinyCNN series,SA23,395,110,27.85,0,0.0,0,0.0,young
+sisfall,TinyCNN series,SE01,295,35,11.86,0,0.0,0,0.0,elderly
+sisfall,TinyCNN series,SE02,240,55,22.92,2,0.83,2,0.83,elderly
+sisfall,TinyCNN series,SE03,295,80,27.12,10,3.39,13,4.41,elderly
+sisfall,TinyCNN series,SE04,295,40,13.56,4,1.36,6,2.03,elderly
+sisfall,TinyCNN series,SE05,295,35,11.86,1,0.34,1,0.34,elderly
+sisfall,TinyCNN series,SE06,395,100,25.32,0,0.0,0,0.0,elderly
+sisfall,TinyCNN series,SE07,295,70,23.73,3,1.02,7,2.37,elderly
+sisfall,TinyCNN series,SE08,295,100,33.9,35,11.86,40,13.56,elderly
+sisfall,TinyCNN series,SE09,295,110,37.29,8,2.71,2,0.68,elderly
+sisfall,TinyCNN series,SE10,295,70,23.73,9,3.05,5,1.69,elderly
+sisfall,TinyCNN series,SE11,295,60,20.34,0,0.0,0,0.0,elderly
+sisfall,TinyCNN series,SE12,295,85,28.81,3,1.02,0,0.0,elderly
+sisfall,TinyCNN series,SE13,295,40,13.56,0,0.0,0,0.0,elderly
+sisfall,TinyCNN series,SE14,295,75,25.42,0,0.0,0,0.0,elderly
+sisfall,TinyCNN series,SE15,290,85,29.31,1,0.34,0,0.0,elderly
+sisfall,TinyEEGNet,SA01,395,115,29.11,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SA02,395,160,40.51,6,1.52,4,1.01,young
+sisfall,TinyEEGNet,SA03,395,190,48.1,23,5.82,20,5.06,young
+sisfall,TinyEEGNet,SA04,395,180,45.57,15,3.8,9,2.28,young
+sisfall,TinyEEGNet,SA05,395,180,45.57,11,2.78,6,1.52,young
+sisfall,TinyEEGNet,SA06,395,175,44.3,20,5.06,13,3.29,young
+sisfall,TinyEEGNet,SA07,395,110,27.85,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SA08,395,195,49.37,28,7.09,14,3.54,young
+sisfall,TinyEEGNet,SA09,395,145,36.71,0,0.0,1,0.25,young
+sisfall,TinyEEGNet,SA10,395,140,35.44,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SA11,395,140,35.44,33,8.35,29,7.34,young
+sisfall,TinyEEGNet,SA12,395,120,30.38,1,0.25,1,0.25,young
+sisfall,TinyEEGNet,SA13,395,145,36.71,1,0.25,0,0.0,young
+sisfall,TinyEEGNet,SA14,395,150,37.97,0,0.0,2,0.51,young
+sisfall,TinyEEGNet,SA15,370,120,32.43,11,2.97,8,2.16,young
+sisfall,TinyEEGNet,SA16,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SA17,390,155,39.74,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SA18,395,135,34.18,4,1.01,2,0.51,young
+sisfall,TinyEEGNet,SA19,395,105,26.58,0,0.0,3,0.76,young
+sisfall,TinyEEGNet,SA20,385,105,27.27,1,0.26,0,0.0,young
+sisfall,TinyEEGNet,SA21,395,195,49.37,8,2.03,4,1.01,young
+sisfall,TinyEEGNet,SA22,395,170,43.04,8,2.03,7,1.77,young
+sisfall,TinyEEGNet,SA23,395,110,27.85,0,0.0,0,0.0,young
+sisfall,TinyEEGNet,SE01,295,35,11.86,0,0.0,0,0.0,elderly
+sisfall,TinyEEGNet,SE02,240,55,22.92,6,2.5,5,2.08,elderly
+sisfall,TinyEEGNet,SE03,295,80,27.12,18,6.1,17,5.76,elderly
+sisfall,TinyEEGNet,SE04,295,40,13.56,3,1.02,12,4.07,elderly
+sisfall,TinyEEGNet,SE05,295,35,11.86,2,0.68,0,0.0,elderly
+sisfall,TinyEEGNet,SE06,395,100,25.32,0,0.0,0,0.0,elderly
+sisfall,TinyEEGNet,SE07,295,70,23.73,6,2.03,16,5.42,elderly
+sisfall,TinyEEGNet,SE08,295,100,33.9,42,14.24,53,17.97,elderly
+sisfall,TinyEEGNet,SE09,295,110,37.29,7,2.37,8,2.71,elderly
+sisfall,TinyEEGNet,SE10,295,70,23.73,6,2.03,5,1.69,elderly
+sisfall,TinyEEGNet,SE11,295,60,20.34,2,0.68,1,0.34,elderly
+sisfall,TinyEEGNet,SE12,295,85,28.81,3,1.02,3,1.02,elderly
+sisfall,TinyEEGNet,SE13,295,40,13.56,0,0.0,0,0.0,elderly
+sisfall,TinyEEGNet,SE14,295,75,25.42,0,0.0,0,0.0,elderly
+sisfall,TinyEEGNet,SE15,290,85,29.31,0,0.0,0,0.0,elderly
+sisfall,TinySSM,SA01,395,115,29.11,0,0.0,0,0.0,young
+sisfall,TinySSM,SA02,395,160,40.51,13,3.29,7,1.77,young
+sisfall,TinySSM,SA03,395,190,48.1,26,6.58,15,3.8,young
+sisfall,TinySSM,SA04,395,180,45.57,10,2.53,7,1.77,young
+sisfall,TinySSM,SA05,395,180,45.57,12,3.04,13,3.29,young
+sisfall,TinySSM,SA06,395,175,44.3,22,5.57,17,4.3,young
+sisfall,TinySSM,SA07,395,110,27.85,5,1.27,3,0.76,young
+sisfall,TinySSM,SA08,395,195,49.37,23,5.82,8,2.03,young
+sisfall,TinySSM,SA09,395,145,36.71,1,0.25,6,1.52,young
+sisfall,TinySSM,SA10,395,140,35.44,0,0.0,0,0.0,young
+sisfall,TinySSM,SA11,395,140,35.44,34,8.61,32,8.1,young
+sisfall,TinySSM,SA12,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinySSM,SA13,395,145,36.71,0,0.0,0,0.0,young
+sisfall,TinySSM,SA14,395,150,37.97,2,0.51,2,0.51,young
+sisfall,TinySSM,SA15,370,120,32.43,15,4.05,8,2.16,young
+sisfall,TinySSM,SA16,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinySSM,SA17,390,155,39.74,2,0.51,0,0.0,young
+sisfall,TinySSM,SA18,395,135,34.18,7,1.77,1,0.25,young
+sisfall,TinySSM,SA19,395,105,26.58,1,0.25,2,0.51,young
+sisfall,TinySSM,SA20,385,105,27.27,0,0.0,0,0.0,young
+sisfall,TinySSM,SA21,395,195,49.37,10,2.53,12,3.04,young
+sisfall,TinySSM,SA22,395,170,43.04,12,3.04,13,3.29,young
+sisfall,TinySSM,SA23,395,110,27.85,0,0.0,0,0.0,young
+sisfall,TinySSM,SE01,295,35,11.86,1,0.34,1,0.34,elderly
+sisfall,TinySSM,SE02,240,55,22.92,6,2.5,7,2.92,elderly
+sisfall,TinySSM,SE03,295,80,27.12,21,7.12,20,6.78,elderly
+sisfall,TinySSM,SE04,295,40,13.56,3,1.02,15,5.08,elderly
+sisfall,TinySSM,SE05,295,35,11.86,1,0.34,0,0.0,elderly
+sisfall,TinySSM,SE06,395,100,25.32,2,0.51,0,0.0,elderly
+sisfall,TinySSM,SE07,295,70,23.73,10,3.39,20,6.78,elderly
+sisfall,TinySSM,SE08,295,100,33.9,57,19.32,66,22.37,elderly
+sisfall,TinySSM,SE09,295,110,37.29,18,6.1,8,2.71,elderly
+sisfall,TinySSM,SE10,295,70,23.73,16,5.42,6,2.03,elderly
+sisfall,TinySSM,SE11,295,60,20.34,7,2.37,3,1.02,elderly
+sisfall,TinySSM,SE12,295,85,28.81,3,1.02,1,0.34,elderly
+sisfall,TinySSM,SE13,295,40,13.56,2,0.68,0,0.0,elderly
+sisfall,TinySSM,SE14,295,75,25.42,1,0.34,0,0.0,elderly
+sisfall,TinySSM,SE15,290,85,29.31,2,0.69,2,0.69,elderly
+sisfall,TinyTCN,SA01,395,115,29.11,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA02,395,160,40.51,16,4.05,7,1.77,young
+sisfall,TinyTCN,SA03,395,190,48.1,23,5.82,20,5.06,young
+sisfall,TinyTCN,SA04,395,180,45.57,6,1.52,11,2.78,young
+sisfall,TinyTCN,SA05,395,180,45.57,16,4.05,14,3.54,young
+sisfall,TinyTCN,SA06,395,175,44.3,16,4.05,11,2.78,young
+sisfall,TinyTCN,SA07,395,110,27.85,3,0.76,2,0.51,young
+sisfall,TinyTCN,SA08,395,195,49.37,16,4.05,12,3.04,young
+sisfall,TinyTCN,SA09,395,145,36.71,2,0.51,2,0.51,young
+sisfall,TinyTCN,SA10,395,140,35.44,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA11,395,140,35.44,28,7.09,28,7.09,young
+sisfall,TinyTCN,SA12,395,120,30.38,2,0.51,1,0.25,young
+sisfall,TinyTCN,SA13,395,145,36.71,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA14,395,150,37.97,2,0.51,2,0.51,young
+sisfall,TinyTCN,SA15,370,120,32.43,8,2.16,5,1.35,young
+sisfall,TinyTCN,SA16,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA17,390,155,39.74,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA18,395,135,34.18,2,0.51,0,0.0,young
+sisfall,TinyTCN,SA19,395,105,26.58,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA20,385,105,27.27,0,0.0,0,0.0,young
+sisfall,TinyTCN,SA21,395,195,49.37,15,3.8,15,3.8,young
+sisfall,TinyTCN,SA22,395,170,43.04,10,2.53,8,2.03,young
+sisfall,TinyTCN,SA23,395,110,27.85,0,0.0,0,0.0,young
+sisfall,TinyTCN,SE01,295,35,11.86,1,0.34,0,0.0,elderly
+sisfall,TinyTCN,SE02,240,55,22.92,3,1.25,8,3.33,elderly
+sisfall,TinyTCN,SE03,295,80,27.12,9,3.05,13,4.41,elderly
+sisfall,TinyTCN,SE04,295,40,13.56,0,0.0,19,6.44,elderly
+sisfall,TinyTCN,SE05,295,35,11.86,1,0.34,1,0.34,elderly
+sisfall,TinyTCN,SE06,395,100,25.32,2,0.51,0,0.0,elderly
+sisfall,TinyTCN,SE07,295,70,23.73,1,0.34,11,3.73,elderly
+sisfall,TinyTCN,SE08,295,100,33.9,49,16.61,66,22.37,elderly
+sisfall,TinyTCN,SE09,295,110,37.29,10,3.39,6,2.03,elderly
+sisfall,TinyTCN,SE10,295,70,23.73,9,3.05,8,2.71,elderly
+sisfall,TinyTCN,SE11,295,60,20.34,3,1.02,0,0.0,elderly
+sisfall,TinyTCN,SE12,295,85,28.81,3,1.02,2,0.68,elderly
+sisfall,TinyTCN,SE13,295,40,13.56,0,0.0,0,0.0,elderly
+sisfall,TinyTCN,SE14,295,75,25.42,0,0.0,0,0.0,elderly
+sisfall,TinyTCN,SE15,290,85,29.31,0,0.0,0,0.0,elderly
+sisfall,TinyTransformer,SA01,395,115,29.11,0,0.0,0,0.0,young
+sisfall,TinyTransformer,SA02,395,160,40.51,12,3.04,9,2.28,young
+sisfall,TinyTransformer,SA03,395,190,48.1,27,6.84,27,6.84,young
+sisfall,TinyTransformer,SA04,395,180,45.57,7,1.77,7,1.77,young
+sisfall,TinyTransformer,SA05,395,180,45.57,9,2.28,18,4.56,young
+sisfall,TinyTransformer,SA06,395,175,44.3,26,6.58,16,4.05,young
+sisfall,TinyTransformer,SA07,395,110,27.85,16,4.05,5,1.27,young
+sisfall,TinyTransformer,SA08,395,195,49.37,31,7.85,21,5.32,young
+sisfall,TinyTransformer,SA09,395,145,36.71,23,5.82,7,1.77,young
+sisfall,TinyTransformer,SA10,395,140,35.44,0,0.0,0,0.0,young
+sisfall,TinyTransformer,SA11,395,140,35.44,41,10.38,40,10.13,young
+sisfall,TinyTransformer,SA12,395,120,30.38,1,0.25,0,0.0,young
+sisfall,TinyTransformer,SA13,395,145,36.71,1,0.25,2,0.51,young
+sisfall,TinyTransformer,SA14,395,150,37.97,19,4.81,2,0.51,young
+sisfall,TinyTransformer,SA15,370,120,32.43,27,7.3,8,2.16,young
+sisfall,TinyTransformer,SA16,395,120,30.38,0,0.0,0,0.0,young
+sisfall,TinyTransformer,SA17,390,155,39.74,1,0.26,2,0.51,young
+sisfall,TinyTransformer,SA18,395,135,34.18,14,3.54,4,1.01,young
+sisfall,TinyTransformer,SA19,395,105,26.58,1,0.25,0,0.0,young
+sisfall,TinyTransformer,SA20,385,105,27.27,0,0.0,0,0.0,young
+sisfall,TinyTransformer,SA21,395,195,49.37,9,2.28,11,2.78,young
+sisfall,TinyTransformer,SA22,395,170,43.04,7,1.77,5,1.27,young
+sisfall,TinyTransformer,SA23,395,110,27.85,3,0.76,2,0.51,young
+sisfall,TinyTransformer,SE01,295,35,11.86,5,1.69,6,2.03,elderly
+sisfall,TinyTransformer,SE02,240,55,22.92,5,2.08,9,3.75,elderly
+sisfall,TinyTransformer,SE03,295,80,27.12,17,5.76,18,6.1,elderly
+sisfall,TinyTransformer,SE04,295,40,13.56,3,1.02,3,1.02,elderly
+sisfall,TinyTransformer,SE05,295,35,11.86,2,0.68,0,0.0,elderly
+sisfall,TinyTransformer,SE06,395,100,25.32,5,1.27,2,0.51,elderly
+sisfall,TinyTransformer,SE07,295,70,23.73,4,1.36,16,5.42,elderly
+sisfall,TinyTransformer,SE08,295,100,33.9,48,16.27,63,21.36,elderly
+sisfall,TinyTransformer,SE09,295,110,37.29,26,8.81,19,6.44,elderly
+sisfall,TinyTransformer,SE10,295,70,23.73,5,1.69,6,2.03,elderly
+sisfall,TinyTransformer,SE11,295,60,20.34,14,4.75,12,4.07,elderly
+sisfall,TinyTransformer,SE12,295,85,28.81,9,3.05,7,2.37,elderly
+sisfall,TinyTransformer,SE13,295,40,13.56,4,1.36,1,0.34,elderly
+sisfall,TinyTransformer,SE14,295,75,25.42,0,0.0,1,0.34,elderly
+sisfall,TinyTransformer,SE15,290,85,29.31,6,2.07,3,1.03,elderly

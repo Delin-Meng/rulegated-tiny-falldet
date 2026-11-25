@@ -1,0 +1,29 @@
+model,family,parameters,operators,tflite_macs,tool_macc,weights_KB,activations_KB,flash_total_KB,ram_total_KB,board,core,clock_MHz,board_sram_KB,status,cycles,latency_ms,latency_at_64MHz_ms,cycles_per_tool_macc,tool_version
+TinyTCN,dilated conv,458,32,20016,27518,0.8,4.0,25.0,6.1,NUCLEO-F401RE,Arm Cortex-M4F,84,96,measured,425130.0,5.061,6.643,15.45,ST Edge AI Core 4.1.0
+TinyTCN,dilated conv,458,32,20016,27518,0.8,4.0,25.0,6.1,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,measured,453420.0,3.779,7.085,16.48,ST Edge AI Core 4.1.0
+TinyTCN,dilated conv,458,32,20016,27518,0.8,4.0,25.0,6.1,NUCLEO-G474RE,Arm Cortex-M4F,170,128,measured,483508.0,2.844,7.555,17.57,ST Edge AI Core 4.1.0
+TinyTCN,dilated conv,458,32,20016,27518,0.8,4.0,25.0,6.1,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,320830.0,3.342,5.013,11.66,ST Edge AI Core 4.1.0
+TinyCNN,CNN,546,5,153616,156064,0.6,5.7,16.5,6.8,NUCLEO-F401RE,Arm Cortex-M4F,84,96,measured,637627.0,7.591,9.963,4.09,ST Edge AI Core 4.1.0
+TinyCNN,CNN,546,5,153616,156064,0.6,5.7,16.5,6.8,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,measured,736743.0,6.14,11.512,4.72,ST Edge AI Core 4.1.0
+TinyCNN,CNN,546,5,153616,156064,0.6,5.7,16.5,6.8,NUCLEO-G474RE,Arm Cortex-M4F,170,128,measured,745243.0,4.384,11.644,4.78,ST Edge AI Core 4.1.0
+TinyCNN,CNN,546,5,153616,156064,0.6,5.7,16.5,6.8,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,140956.0,1.468,2.202,0.9,ST Edge AI Core 4.1.0
+TinyEEGNet,depthwise-separable CNN,338,9,23152,23716,0.4,1.8,26.1,3.0,NUCLEO-F401RE,Arm Cortex-M4F,84,96,measured,252542.0,3.006,3.946,10.65,ST Edge AI Core 4.1.0
+TinyEEGNet,depthwise-separable CNN,338,9,23152,23716,0.4,1.8,26.1,3.0,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,measured,316866.0,2.641,4.951,13.36,ST Edge AI Core 4.1.0
+TinyEEGNet,depthwise-separable CNN,338,9,23152,23716,0.4,1.8,26.1,3.0,NUCLEO-G474RE,Arm Cortex-M4F,170,128,measured,314586.0,1.851,4.915,13.26,ST Edge AI Core 4.1.0
+TinyEEGNet,depthwise-separable CNN,338,9,23152,23716,0.4,1.8,26.1,3.0,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,conversion error: ST Edge AI Core 4.1.0 internal error (scratch bytesize) for the stm32u3 target,,,,,ST Edge AI Core 4.1.0
+TinySSM,state-space,378,28,48816,51838,1.2,3.2,30.6,5.8,NUCLEO-F401RE,Arm Cortex-M4F,84,96,measured,427131.0,5.085,6.674,8.24,ST Edge AI Core 4.1.0
+TinySSM,state-space,378,28,48816,51838,1.2,3.2,30.6,5.8,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,measured,476964.0,3.975,7.453,9.2,ST Edge AI Core 4.1.0
+TinySSM,state-space,378,28,48816,51838,1.2,3.2,30.6,5.8,NUCLEO-G474RE,Arm Cortex-M4F,170,128,measured,509315.0,2.996,7.958,9.83,ST Edge AI Core 4.1.0
+TinySSM,state-space,378,28,48816,51838,1.2,3.2,30.6,5.8,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,187127.0,1.949,2.924,3.61,ST Edge AI Core 4.1.0
+TinyTransformer,attention,946,55,9136,45882,1.1,1.5,47.6,10.6,NUCLEO-F401RE,Arm Cortex-M4F,84,96,measured,307762.0,3.664,4.809,6.71,ST Edge AI Core 4.1.0
+TinyTransformer,attention,946,55,9136,45882,1.1,1.5,47.6,10.6,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,measured,340897.0,2.841,5.327,7.43,ST Edge AI Core 4.1.0
+TinyTransformer,attention,946,55,9136,45882,1.1,1.5,47.6,10.6,NUCLEO-G474RE,Arm Cortex-M4F,170,128,measured,352674.0,2.075,5.511,7.69,ST Edge AI Core 4.1.0
+TinyTransformer,attention,946,55,9136,45882,1.1,1.5,47.6,10.6,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,299036.0,3.115,4.672,6.52,ST Edge AI Core 4.1.0
+CNN-LSTM,recurrent,1426,751,66648,81658,2.0,1.7,360.8,156.1,NUCLEO-F401RE,Arm Cortex-M4F,84,96,"not deployable: board pre-check, not enough RAM (needs ~160 KB)",,,,,ST Edge AI Core 4.1.0
+CNN-LSTM,recurrent,1426,751,66648,81658,2.0,1.7,360.8,156.1,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,"not deployable: generate error, RAM pool short by 14.7 KB",,,,,ST Edge AI Core 4.1.0
+CNN-LSTM,recurrent,1426,751,66648,81658,2.0,1.7,360.8,156.1,NUCLEO-G474RE,Arm Cortex-M4F,170,128,"not deployable: board pre-check, not enough RAM (needs ~160 KB)",,,,,ST Edge AI Core 4.1.0
+CNN-LSTM,recurrent,1426,751,66648,81658,2.0,1.7,360.8,156.1,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,1332300.0,13.878,20.817,16.32,ST Edge AI Core 4.1.0
+Musci LSTM,recurrent,2322,752,106208,127766,3.0,1.6,365.3,156.5,NUCLEO-F401RE,Arm Cortex-M4F,84,96,"not deployable: board pre-check, not enough RAM (needs ~160 KB)",,,,,ST Edge AI Core 4.1.0
+Musci LSTM,recurrent,2322,752,106208,127766,3.0,1.6,365.3,156.5,STM32L4R9I-DISCO,Arm Cortex-M4F,120,640,"not deployable: generate error, RAM pool short by 15.3 KB",,,,,ST Edge AI Core 4.1.0
+Musci LSTM,recurrent,2322,752,106208,127766,3.0,1.6,365.3,156.5,NUCLEO-G474RE,Arm Cortex-M4F,170,128,"not deployable: board pre-check, not enough RAM (needs ~160 KB)",,,,,ST Edge AI Core 4.1.0
+Musci LSTM,recurrent,2322,752,106208,127766,3.0,1.6,365.3,156.5,NUCLEO-U3C5ZI-Q,Arm Cortex-M33,96,640,measured,1749241.0,18.221,27.332,13.69,ST Edge AI Core 4.1.0
