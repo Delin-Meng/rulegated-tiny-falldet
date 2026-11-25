@@ -1,35 +1,22 @@
 # Kinematic Rule Gating with a Tiny Temporal Convolutional Network for Wearable Fall Detection on Microcontrollers
 
-**Sub-2.5K-parameter neural networks behind a kinematic rule gate for fall detection on microcontrollers**,
-evaluated on the KFall and SisFall wearable IMU datasets.
+A wearable fall detector does not need to run a neural network on every sensor window. This repository shows how
+far a simple idea goes: let a **kinematic rule gate** look at each 0.5 s window first, and wake a **458-parameter
+network** only when the window shows a large acceleration, a large rotation and a large tilt at the same time.
 
-This repository contains the experiment code of the manuscript of the same title by Delin Meng, Sanghyeuk Kim,
-Shilei Zong, Hamida Mahama and Jaesoo Yoo (submitted for publication): data preprocessing, seven tiny models,
-subject-wise cross-validation with paired and equivalence statistics, full-INT8 TensorFlow Lite deployment
-analysis, the kinematic rule gate that runs before the network, and the follow-up studies (quantization variants,
-QAT, early stopping, cross-dataset transfer, MCU export, paper figures).
+```
+IMU (6 axes, 100 Hz) ─► 0.5 s window ─► kinematic rule gate ─── pass (9–14 % of windows) ──► TinyTCN, full INT8 ─► fall?
+                                               │
+                                               └── reject (86–91 %) ──► non-fall, no network call
+```
 
----
+Here you will find the code and the result files of the manuscript of the same title by Delin Meng, Sanghyeuk Kim,
+Shilei Zong, Hamida Mahama and Jaesoo Yoo (submitted for publication). Everything was evaluated on the public
+KFall and SisFall datasets.
 
-## Highlights
+## Key results
 
-- **Two-stage detector**: a kinematic rule gate tests the peak acceleration, peak angular velocity and peak tilt
-  angle of each 0.5 s window, and only the windows that exceed all three thresholds are sent to the network.
-- **Tiny models (338–2,322 parameters)**: TinyTCN, TinySSM, TinyCNN, TinyEEGNet, TinyTransformer, CNN-LSTM and a
-  re-implementation of the LSTM of Musci et al. (2021), all trained with one common protocol.
-- **Deployment-first evaluation**: every model is converted to full-INT8 TFLite (int8 weights, activations and I/O).
-  The pipeline reports MACs, parameter bytes, `.tflite` size, peak activation memory and single-thread CPU latency,
-  and exports the files used for the STM32 measurements.
-- **Statistics**: 5-fold subject-wise CV × 5 seeds, Nadeau–Bengio corrected resampled t-tests with Holm adjustment,
-  and TOST equivalence tests. The paper reports the corrected t-test and the 1- and 2-point margins; the code also
-  computes Wilcoxon tests and a 0.5-point margin.
-- **Resumable and traceable**: every run saves its model, predictions, config snapshot, subject lists,
-  normalization statistics, INT8 calibration record and a SHA-256 fingerprint of the code. All metrics are
-  recomputed from saved predictions, so evaluation rules can change without retraining.
-
-## Results in brief
-
-Subject-wise five-fold cross-validation with five seeds (25 runs per model and dataset), as reported in the paper:
+Subject-wise five-fold cross-validation with five seeds (25 runs per model and dataset):
 
 | Finding                                                      |   KFall |  SisFall |
 | ------------------------------------------------------------ | ------: | -------: |
@@ -37,75 +24,24 @@ Subject-wise five-fold cross-validation with five seeds (25 runs per model and d
 | Trial-level G-mean of gated full-INT8 TinyTCN                |   99.3% |    98.3% |
 | Equivalence margin to the re-implemented floating-point TinyCNN | 1 point | 2 points |
 
-- The gate changes the G-mean of INT8 TinyTCN by less than 0.1 points.
-- On a Cortex-M4 board, the estimated inference time per window is about 15 times lower than that of ungated
-  TinyCNN on KFall.
-- Post-training INT8 quantization costs the convolutional and state-space models at most 0.6 points and the
-  attention and recurrent models up to 5 points.
+- **The gate is almost free in accuracy.** It changes the G-mean of INT8 TinyTCN by less than 0.1 points.
+- **The gate is where the saving comes from.** On a Cortex-M4 board, the estimated inference time per window is
+  about 15 times lower than that of ungated TinyCNN on KFall.
+- **Not every tiny model survives INT8.** Post-training quantization costs the convolutional and state-space
+  models at most 0.6 points, but the attention and recurrent models up to 5 points.
 
-## Models
+## What is in this repository
 
-All models take a `[6 axes × 50 samples]` window (0.5 s at 100 Hz) and output `P(fall)` through a 2-way softmax.
+| Folder                 | What you get                                                 |
+| ---------------------- | ------------------------------------------------------------ |
+| [`code/`](code/)       | Everything needed to rerun the study: preprocessing, seven tiny models, cross-validation with paired and equivalence statistics, full-INT8 TensorFlow Lite conversion, the rule gate, and the follow-up studies. [`code/README.md`](code/README.md) documents every command, option and output file |
+| [`results/`](results/) | The result files behind the tables and figures of the paper: per-run tables of all experiments, the seven full-INT8 models that were benchmarked, and the flash, RAM and latency measured on four STM32 boards. [`results/README.md`](results/README.md) maps each table of the paper to its file and explains how to recompute the statistical tests |
 
-| Name (`--models`) | Model           | Parameters | Description                                                  |
-| ----------------- | --------------- | ---------: | ------------------------------------------------------------ |
-| `tinytcn`         | **TinyTCN**     |        458 | 1×1 conv → 4 residual blocks of causal dilated depthwise conv (d = 1, 2, 4, 8) + 1×1 conv → GAP. Receptive field 31 samples |
-| `tinyssm`         | TinySSM         |        378 | 1×1 conv → 2 residual blocks of an S4D-style diagonal state-space layer + 1×1 conv → GAP |
-| `tinycnn`         | TinyCNN         |        546 | Re-implementation of Yu et al. (2023): temporal conv (1×16) → spatial conv (6×1) → GAP |
-| `tinyeegnet`      | TinyEEGNet      |        338 | EEGNet (Lawhern et al., 2018) scaled to 6 axes × 50 samples  |
-| `tinytransformer` | TinyTransformer |        946 | Patch embedding (10 tokens) + one pre-norm Transformer block (2 heads) |
-| `cnnlstm`         | CNN-LSTM        |      1,426 | Conv1D (8 filters) → LSTM(12), recurrent baseline            |
-| `musci2021`       | Musci LSTM      |      2,322 | Re-implementation of the LSTM of Musci et al. (2021) with its original layer configuration. Differences from the original implementation are documented in [models/musci2021.py](code/models/musci2021.py) |
+The KFall and SisFall datasets are not included; see [Data](#data) for where to get them. The trained Keras models
+and the per-window predictions of the individual runs are not included either, because of their size. You can
+regenerate them with the code.
 
-Additional registered variants: `tinycnn_valid` (EEGNet-style valid padding) and a TinyTCN size sweep
-(`tinytcn_c4`, `_c6`, `_c12`, `_c16`, `_b2`, `_b3`). Run `python overall.py list` to print all of them with their
-parameter counts. To add your own variant, add one line to `VARIANTS` in [models/\_\_init\_\_.py](code/models/__init__.py).
-
-## Method overview
-
-| Stage           | Setting (all in [config.py](code/config.py))                 |
-| --------------- | ------------------------------------------------------------ |
-| Input           | AccX/Y/Z (g) and GyrX/Y/Z (°/s) at 100 Hz. SisFall is decimated from 200 Hz by taking every second sample |
-| Windowing       | 50 samples (0.5 s), step 10 (0.1 s). A window is a *fall window* (called an accident window in the code) if ≥ 20 of its 50 samples lie in the fall interval, which runs from the annotated fall onset to 50 samples after the impact (for SisFall, the annotated fall segment). Samples after the interval are dropped |
-| Normalization   | Per-axis z-score with statistics from the training subjects only |
-| Training        | Adam (lr 5e-4), batch 512, 200 epochs, focal loss (Keras `CategoricalFocalCrossentropy`, γ = 2, α = 0.25), CPU only |
-| Quantization    | Full-INT8 TFLite, calibrated on 1,000 training windows clipped at the 99.9th percentile of \|z\| |
-| Gate            | Per window: max \|a\|, max \|ω\| and max tilt angle from the upright sensor axis. A window passes if all three exceed their thresholds. The thresholds minimize the share of training windows that pass while keeping 100 % of the training fall trials |
-| Trial decision  | A trial is a fall if any window reaches `P(fall) ≥ threshold`. The threshold is chosen on the INT8 output grid k/256 to maximize trial-level G-mean on the training subjects (no test data) |
-| Evaluation      | Subject-wise 5-fold cross-validation with fixed folds and seeds 0, 7, 42, 123 and 1337 |
-| Headline metric | `Gated INT8 tuned Trial G-mean`: gate + tuned threshold + full INT8 model |
-
-## Repository structure
-
-```
-rulegated-tiny-falldet/
-├── code/
-│   ├── overall.py          # single entry point for every experiment (see Usage)
-│   ├── config.py           # all settings: data rules, training, thresholds, gate, quantization, timing
-│   ├── models/             # model registry + one file per architecture
-│   ├── preprocessing.py    # reading KFall / SisFall, windowing, labels, subject-wise splits
-│   ├── training.py         # training and metrics (trial / window sensitivity, specificity, G-mean, AUC)
-│   ├── gate.py             # kinematic rule gate: as a stand-alone detector and as a first-stage filter
-│   ├── cv.py               # k-fold × seeds cross-validation, paired tests, TOST
-│   ├── deployment.py       # TFLite FP32 / INT8 conversion, MACs, sizes, peak memory, latency
-│   ├── quantization.py     # FP16 / weight-only / balanced-calibration / 16x8 variants, INT8 loss diagnosis
-│   ├── qat.py              # quantization-aware training of the recurrent models
-│   ├── pruning.py          # magnitude pruning + fine-tuning
-│   ├── early_stopping.py   # early stopping vs fixed 200 epochs
-│   ├── transfer.py         # cross-dataset transfer (KFall ↔ SisFall)
-│   ├── analysis.py         # gate cost, ops per window, MACs by layer, misses by fall type, gate ablation
-│   ├── mcu.py              # files for STM32 / ST Edge AI deployment and on-target validation
-│   ├── figures.py          # paper figures (PNG + PDF)
-│   ├── records.py          # reproducibility records (config snapshots, data manifests, code hashes)
-│   ├── run_all.sh / .ps1   # main experiments, all models, both datasets
-│   ├── run_extra.py / .sh  # follow-up experiments on a CPU- and memory-aware process pool
-│   └── README.md           # detailed reference: every command, option and output file
-└── dataset/                # not included: create this folder and put the datasets inside (see Data)
-    ├── KFall/
-    └── SisFall/
-```
-
-## Installation
+## Quick start
 
 The code was developed with **TensorFlow 2.21 / Keras 3** and runs on the CPU (GPUs are hidden by default,
 see `USE_GPU` in `config.py`).
@@ -116,10 +52,21 @@ conda activate falldet
 pip install "tensorflow==2.21.*" numpy pandas scipy scikit-learn tqdm matplotlib openpyxl
 ```
 
+Place the datasets as described under [Data](#data), then check that everything is in place and run a two-epoch
+smoke test:
+
+```bash
+cd code
+python overall.py check                                   # data self-check
+python overall.py list                                    # registered models and parameter counts
+python overall.py train --models tinytcn --epochs 2       # smoke test on the fixed KFall split
+python overall.py cv --models tinytcn --folds 0 --seeds 0 --epochs 2
+```
+
 ## Data
 
 The datasets are **not included** in this repository. KFall in particular may not be redistributed. Obtain the
-datasets from their authors and place them like this:
+datasets from their authors, create a `dataset/` folder next to `code/`, and place them like this:
 
 ```
 dataset/
@@ -137,25 +84,14 @@ dataset/
 | SisFall                 | Sucerquia et al., *Sensors* 17(1):198, 2017. [doi:10.3390/s17010198](https://doi.org/10.3390/s17010198) |
 | SisFall temporal labels | <https://bitbucket.org/unipv_cvmlab/sisfalltemporallyannotated/> |
 
-Run `python overall.py check` to verify the data. For KFall the expected counts are 5,075 trials, 2,346 falls,
-32 subjects, 310,512 windows and 24,573 fall windows. The corresponding SisFall counts in the paper are 4,500
-trials, 1,798 falls, 38 subjects and 634,427 windows; the five SisFall recordings of participant SA15 in activity
-D17 are excluded because they have no per-sample labels. The first run caches the parsed signals in
-`results/cache/`.
+`python overall.py check` verifies the data. For KFall you should see 5,075 trials, 2,346 falls, 32 subjects,
+310,512 windows and 24,573 fall windows. The corresponding SisFall counts in the paper are 4,500 trials, 1,798
+falls, 38 subjects and 634,427 windows; the five SisFall recordings of participant SA15 in activity D17 are excluded
+because they have no per-sample labels. The first run caches the parsed signals in `results/cache/`.
 
-## Usage
+## Reproducing the paper
 
 Run everything from the `code/` folder.
-
-### Quick start
-
-```bash
-cd code
-python overall.py check                                   # data self-check
-python overall.py list                                    # registered models and parameter counts
-python overall.py train --models tinytcn --epochs 2       # smoke test on the fixed KFall split
-python overall.py cv --models tinytcn --folds 0 --seeds 0 --epochs 2
-```
 
 ### Main experiments
 
@@ -183,10 +119,9 @@ Cross-validation runs can be started in parallel terminals (one per model), and 
 | `python overall.py mcu`              | INT8 model, `deployment.json` and validation tensors for STM32 / ST Edge AI |
 | `python overall.py figures`          | Paper figures -> `results/figures/paper/`                    |
 
-Run `python overall.py <command> -h` to list a command's options. [code/README.md](code/README.md) documents
-every option and output file.
+Run `python overall.py <command> -h` to list a command's options.
 
-### Full reproduction
+### Everything at once
 
 ```bash
 cd code
@@ -199,26 +134,96 @@ to `results/logs/`. They are tuned for an Intel i9-14900 (32 threads, 64 GB): `r
 with `CPU_THREADS=4`, so on other machines set `CPU_THREADS` to about your thread count / 9.
 `python run_extra.py --dry_run` lists the work units and their estimated durations.
 
-## On-device measurements
+Training does not use deterministic TensorFlow kernels, so a rerun gives numbers that agree closely with the paper
+but are not bit-identical.
+
+### On-device measurements
 
 The STM32 latency and memory figures in the paper were measured with the
 [ST Edge AI Developer Cloud](https://stedgeai-dc.st.com), using ST Edge AI Core 4.1.0 with "balanced"
 optimization and the default memory-pool templates, on four boards: NUCLEO-F401RE, STM32L4R9I-DISCO,
 NUCLEO-G474RE and NUCLEO-U3C5ZI-Q.
 
-`python overall.py mcu` writes the full-INT8 `.tflite` file of each model trained on the fixed KFall split,
-together with `deployment.json` and the validation tensors, to `results/mcu/<model>/`. Upload the `.tflite` file
-to the Developer Cloud to repeat the benchmark. The gate is not part of the exported graph; its cost is counted
-analytically as 852 operations per window.
+The benchmarked full-INT8 models are in [`results/<model>/`](results/), and the measured values are in
+[`results/MCU/`](results/MCU/). To repeat the benchmark, upload a `<model>_int8.tflite` file to the Developer
+Cloud. To export the models yourself, run `python overall.py mcu`, which writes the `.tflite` file of each model
+trained on the fixed KFall split, together with `deployment.json` and the validation tensors. The gate is not part
+of the exported graph; its cost is counted analytically as 852 operations per window.
 
-<!-- CONFIRM BEFORE UNCOMMENTING: replace both paths with the real locations in this repository.
-The per-run results behind the tables of the paper are in `<path-to-results>`, and the ST Edge AI reports of the
-benchmarked models are in `<path-to-reports>`.
--->
+## Models
 
-## Outputs
+All models take a `[6 axes × 50 samples]` window (0.5 s at 100 Hz) and output `P(fall)` through a 2-way softmax.
 
-Results are written to `code/results/`. Set the `ACT_RESULTS_DIR` environment variable to use another folder.
+| Name (`--models`) | Model           | Parameters | Description                                                  |
+| ----------------- | --------------- | ---------: | ------------------------------------------------------------ |
+| `tinytcn`         | **TinyTCN**     |        458 | 1×1 conv → 4 residual blocks of causal dilated depthwise conv (d = 1, 2, 4, 8) + 1×1 conv → GAP. Receptive field 31 samples |
+| `tinyssm`         | TinySSM         |        378 | 1×1 conv → 2 residual blocks of an S4D-style diagonal state-space layer + 1×1 conv → GAP |
+| `tinycnn`         | TinyCNN         |        546 | Re-implementation of Yu et al. (2023): temporal conv (1×16) → spatial conv (6×1) → GAP |
+| `tinyeegnet`      | TinyEEGNet      |        338 | EEGNet (Lawhern et al., 2018) scaled to 6 axes × 50 samples  |
+| `tinytransformer` | TinyTransformer |        946 | Patch embedding (10 tokens) + one pre-norm Transformer block (2 heads) |
+| `cnnlstm`         | CNN-LSTM        |      1,426 | Conv1D (8 filters) → LSTM(12), recurrent baseline            |
+| `musci2021`       | Musci LSTM      |      2,322 | Re-implementation of the LSTM of Musci et al. (2021) with its original layer configuration. Differences from the original implementation are documented in [models/musci2021.py](code/models/musci2021.py) |
+
+Additional registered variants: `tinycnn_valid` (EEGNet-style valid padding) and a TinyTCN size sweep
+(`tinytcn_c4`, `_c6`, `_c12`, `_c16`, `_b2`, `_b3`). To add your own variant, add one line to `VARIANTS` in
+[models/\_\_init\_\_.py](code/models/__init__.py).
+
+## How the method works
+
+| Stage           | Setting (all in [config.py](code/config.py))                 |
+| --------------- | ------------------------------------------------------------ |
+| Input           | AccX/Y/Z (g) and GyrX/Y/Z (°/s) at 100 Hz. SisFall is decimated from 200 Hz by taking every second sample |
+| Windowing       | 50 samples (0.5 s), step 10 (0.1 s). A window is a *fall window* (called an accident window in the code) if ≥ 20 of its 50 samples lie in the fall interval, which runs from the annotated fall onset to 50 samples after the impact (for SisFall, the annotated fall segment). Samples after the interval are dropped |
+| Normalization   | Per-axis z-score with statistics from the training subjects only |
+| Training        | Adam (lr 5e-4), batch 512, 200 epochs, focal loss (Keras `CategoricalFocalCrossentropy`, γ = 2, α = 0.25), CPU only |
+| Quantization    | Full-INT8 TFLite, calibrated on 1,000 training windows clipped at the 99.9th percentile of \|z\| |
+| Gate            | Per window: max \|a\|, max \|ω\| and max tilt angle from the upright sensor axis. A window passes if all three exceed their thresholds. The thresholds minimize the share of training windows that pass while keeping 100 % of the training fall trials |
+| Trial decision  | A trial is a fall if any window reaches `P(fall) ≥ threshold`. The threshold is chosen on the INT8 output grid k/256 to maximize trial-level G-mean on the training subjects (no test data) |
+| Evaluation      | Subject-wise 5-fold cross-validation with fixed folds and seeds 0, 7, 42, 123 and 1337 |
+| Statistics      | Nadeau–Bengio corrected resampled t-tests with Holm adjustment and TOST equivalence tests at 1- and 2-point margins, as reported in the paper. The code also computes Wilcoxon tests and a 0.5-point margin |
+| Headline metric | `Gated INT8 tuned Trial G-mean`: gate + tuned threshold + full INT8 model |
+
+Every run saves its model, predictions, config snapshot, subject lists, normalization statistics, INT8 calibration
+record and a SHA-256 fingerprint of the code. All metrics are recomputed from the saved predictions, so evaluation
+rules can change without retraining.
+
+## Repository layout
+
+```
+rulegated-tiny-falldet/
+├── code/
+│   ├── overall.py          # single entry point for every experiment
+│   ├── config.py           # all settings: data rules, training, thresholds, gate, quantization, timing
+│   ├── models/             # model registry + one file per architecture
+│   ├── preprocessing.py    # reading KFall / SisFall, windowing, labels, subject-wise splits
+│   ├── training.py         # training and metrics (trial / window sensitivity, specificity, G-mean, AUC)
+│   ├── gate.py             # kinematic rule gate: as a stand-alone detector and as a first-stage filter
+│   ├── cv.py               # k-fold × seeds cross-validation, paired tests, TOST
+│   ├── deployment.py       # TFLite FP32 / INT8 conversion, MACs, sizes, peak memory, latency
+│   ├── quantization.py     # FP16 / weight-only / balanced-calibration / 16x8 variants, INT8 loss diagnosis
+│   ├── qat.py              # quantization-aware training of the recurrent models
+│   ├── pruning.py          # magnitude pruning + fine-tuning
+│   ├── early_stopping.py   # early stopping vs fixed 200 epochs
+│   ├── transfer.py         # cross-dataset transfer (KFall ↔ SisFall)
+│   ├── analysis.py         # gate cost, ops per window, MACs by layer, misses by fall type, gate ablation
+│   ├── mcu.py              # files for STM32 / ST Edge AI deployment and on-target validation
+│   ├── figures.py          # paper figures (PNG + PDF)
+│   ├── records.py          # reproducibility records (config snapshots, data manifests, code hashes)
+│   ├── run_all.sh / .ps1   # main experiments, all models, both datasets
+│   ├── run_extra.py / .sh  # follow-up experiments on a CPU- and memory-aware process pool
+│   └── README.md           # detailed reference: every command, option and output file
+├── results/                # result files of the paper (see results/README.md)
+│   ├── cv_kfall/, cv_sisfall/    # main experiment: 7 models × 5 folds × 5 seeds
+│   ├── analysis/, transfer/, quantization/, qat/, es_*/, sweep_tinytcn_kfall/
+│   ├── <model>/                  # the full-INT8 model benchmarked on the boards
+│   └── MCU/                      # flash, RAM and latency on the four STM32 boards
+└── dataset/                # not included: create this folder and put the datasets inside (see Data)
+```
+
+## Output files of the code
+
+The code writes to `code/results/` (set the `ACT_RESULTS_DIR` environment variable to use another folder). The
+released files in [`results/`](results/) keep the same relative paths.
 
 | Path                                                         | Contents                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -241,11 +246,11 @@ All settings live in [code/config.py](code/config.py). Some useful ones:
 - `CV_FOLDS`, `CV_SEEDS`, `EPOCHS`, `WINDOW`, `STEP`. Window settings take effect without re-reading the raw
   files.
 - `DETERMINISTIC`: set to `True` for bit-identical reruns with the same seed (slower). The runs reported in the
-  paper did not use this mode, so repeating them gives results that agree closely but are not bit-identical.
+  paper did not use this mode.
 
 ## Citation
 
-If you use this code, please cite:
+If you use this code or these results, please cite:
 
 ```bibtex
 @unpublished{meng2026rulegating,
