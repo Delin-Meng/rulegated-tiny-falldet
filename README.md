@@ -263,14 +263,3 @@ Please also cite the datasets you use:
 - A. Sucerquia, J. D. López, J. F. Vargas-Bonilla. *SisFall: A Fall and Movement Dataset.* Sensors 17(1):198, 2017.
 - M. Musci et al. *Online Fall Detection Using Recurrent Neural Networks on Smart Wearable Devices.*
   IEEE Transactions on Emerging Topics in Computing 9(3):1276–1289, 2021.
-
-## Acknowledgements
-
-TinyCNN follows Yu et al., *Biomedical Signal Processing and Control* 86:105325, 2023.
-
-## License
-
-<!-- CONFIRM BEFORE UNCOMMENTING: add the LICENSE file first, and change "MIT" if another license is chosen.
-The code in this repository is released under the MIT License; see [LICENSE](LICENSE).
--->
-The datasets are not included and keep their own licenses and terms of use.
