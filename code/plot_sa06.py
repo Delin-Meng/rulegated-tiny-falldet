@@ -1,4 +1,4 @@
-"""Plot acceleration of one SA06 trial (S06T20R01, fall F01) to check data loading (team version)."""
+"""Plot acceleration of one SA06 trial (S06T20R01, fall F01) to check data loading."""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
