@@ -1,5 +1,5 @@
 """
-Cross-dataset model transfer (review item 14): every saved cross-validation model of the source dataset is tested
+Cross-dataset model transfer: every saved cross-validation model of the source dataset is tested
 on the whole other dataset. Everything is taken from the model's own source training fold: normalisation
 statistics, tuned thresholds, gate thresholds and the INT8 calibration; nothing is tuned on the target dataset.
 Needs the runs of the source dataset in results/cv_<source>/runs/ (.json, .npz, .keras).
