@@ -7,8 +7,8 @@ USE_GPU = False                # False: hide all GPUs from TensorFlow, every run
 # servers a few threads per process (e.g. 4-8) is usually faster, and leaves cores for parallel processes.
 # Can also be set per run with the environment variable CPU_THREADS.
 CPU_THREADS = None
-# True: tf.config.experimental.enable_op_determinism() (as in the team's cnn_lstm.py) -> bit-identical reruns with
-# the same seed, somewhat slower. Off for the experiments already running so that their settings stay the same.
+# True: tf.config.experimental.enable_op_determinism() -> bit-identical reruns with
+# The runs reported in the paper were made with this option off.
 DETERMINISTIC = False
 
 CODE_DIR = Path(__file__).resolve().parent
@@ -17,7 +17,7 @@ DATASET_DIR = CODE_DIR.parent / "dataset"
 RESULTS_DIR = Path(os.environ.get("ACT_RESULTS_DIR") or CODE_DIR / "results")
 CACHE_DIR = RESULTS_DIR / "cache"
 
-# ---- data (team common rules) ----
+# ---- data ----
 WINDOW, STEP = 50, 10          # 0.5 s / 0.1 s at 100 Hz
 FALL_EXT = 50                  # falling period = onset .. impact + 50 rows, later rows are dropped
 FALL_MIN = 20                  # >= 40 % of the 50 rows inside the falling period -> accident window
@@ -25,7 +25,7 @@ CHANNELS = ["AccX", "AccY", "AccZ", "GyrX", "GyrY", "GyrZ"]
 KFALL_TEST_SUBJECTS = ["SA32", "SA33", "SA35", "SA36", "SA37", "SA38"]
 KFALL_EXPECTED = {"Trials": 5075, "Falls": 2346, "Subjects": 32, "Windows": 310512, "Accident windows": 24573}
 
-# ---- training (team common rules / paper Sec. 2.3) ----
+# ---- training (paper III-D.3) ----
 EPOCHS = 200
 BATCH_SIZE = 512
 LEARNING_RATE = 0.0005         # Adam; loss = Keras CategoricalFocalCrossentropy with default arguments
@@ -35,7 +35,7 @@ CV_FOLDS = 5
 CV_FOLD_SEED = 0               # subject-to-fold assignment, identical for every model and seed
 
 # ---- evaluation ----
-THRESHOLD = 0.5                # team rule: a trial is an accident if any window has P(fall) >= this
+THRESHOLD = 0.5                # fixed threshold: a trial is an accident if any window has P(fall) >= this
 # candidates for the tuned threshold: every output level of the INT8 softmax (k / 256), the same grid for FP32.
 # Protocol v1 (results before 2026-10-22) used THRESHOLD_GRID_CAPPED; its lower end 0.50 was binding for the INT8
 # LSTM on SisFall (quantization shifts its P(fall) down), which cost it ~17 G-mean points (see quantization.diagnose)
@@ -61,7 +61,7 @@ ROC_FPR_GRID = [round(0.01 * i, 2) for i in range(101)]            # ROC curves 
 VERTICAL_AXIS = 1
 GATE_CONDITIONS = (0, 1, 2)
 GATE_CONSECUTIVE = 1
-GATE_START = (1.5, 60.0, 45.0)                     # team starting values: acc (g), gyr (deg/s), tilt (deg)
+GATE_START = (1.5, 60.0, 45.0)                     # starting values: acc (g), gyr (deg/s), tilt (deg)
 # gate as a detector: grid and criterion (trial balanced accuracy on the training subjects)
 GATE_DETECTOR_GRID = ([round(1.5 + 0.25 * i, 2) for i in range(11)],     # 1.5 .. 4.0
                       [60 + 20 * i for i in range(13)],                   # 60 .. 300
@@ -73,18 +73,18 @@ GATE_FILTER_GRID = ([0.25 * i for i in range(17)],                        # 0 ..
                     [20 * i for i in range(16)],                          # 0 .. 300
                     [5 * i for i in range(28)])                           # 0 .. 135
 GATE_TRIAL_RECALL = 1.0                            # main setting: no training fall trial dropped by the gate
-GATE_RECALL_SWEEP = [0.97, 0.98, 0.99, 0.995, 1.0]  # gate constraint sweep (P1 item 3)
+GATE_RECALL_SWEEP = [0.97, 0.98, 0.99, 0.995, 1.0]  # gate constraint sweep
 
 # ---- model groups used by the analyses ----
 BASELINE_MODEL = "tinycnn"                          # "the baseline" of the equivalence claims
 EQUIVALENCE_GROUP = ["tinytcn", "tinyssm", "tinyeegnet"]   # conv models equivalent to TinyCNN (TOST, 1 point)
-GATE_ABLATION_MODELS = ["tinytcn", "tinycnn"]       # gated results per gate variant (P2 item 16)
+GATE_ABLATION_MODELS = ["tinytcn", "tinycnn"]       # gated results per gate variant
 
-# ---- early-stopping comparison (review item 15) ----
+# ---- early-stopping comparison ----
 ES_PATIENCE = 10               # epochs without a lower validation loss before early stopping would stop
 ES_VAL_FRACTION = 0.2          # share of each fold's training subjects held out as the validation set
 # early stopping on both datasets (P1 item 8): at most EPOCHS epochs, stopped after ES_PATIENCE epochs without a lower
-# validation loss, best weights kept; validation = THRESHOLD_VAL_FRACTION of the training subjects. The plan's rule
+# validation loss, best weights kept; validation = THRESHOLD_VAL_FRACTION of the training subjects. The short schedule
 # (at most ES_PLAN_EPOCHS epochs, patience ES_PLAN_PATIENCE) is read off the same training runs.
 ES_PLAN_EPOCHS = 10
 ES_PLAN_PATIENCE = 3
