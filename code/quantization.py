@@ -1,5 +1,5 @@
 """
-Quantization of the saved cross-validation models without retraining (P1 items 1-2, P2 item 15).
+Quantization of the saved cross-validation models without retraining.
 
 run(): every saved run of results/cv_<dataset>/runs/ is converted again in each variant of config.QUANT_VARIANTS
 and evaluated on the run's own threshold-tuning and test windows:
@@ -23,7 +23,7 @@ report(): metrics of every variant from the saved predictions, without and with 
 -> all_runs.csv, summary.csv, paired_tests.csv (each variant vs FP32 and vs full INT8), equivalence_tests.csv
 (TOST vs FP32), figures/quantization_<dataset>.csv.
 
-diagnose() (P1 item 1, "is the INT8 failure saturation or a bug?"), per saved run of the given models:
+diagnose() (where the full-INT8 accuracy loss comes from), per saved run of the given models:
   - the full-INT8 model is converted again and compared with the saved predictions. The calibration runs the float
     model with oneDNN, whose summation order depends on the machine and thread count, so ranges can differ in the
     last float digits; a model whose INT8 outputs then change (share of windows, G-mean with the same threshold)
@@ -346,7 +346,7 @@ def report(dataset):
     print(f"Saved to {out}")
 
 
-# ---------------------------------------------------------------- diagnosis (P1 item 1)
+# ---------------------------------------------------------------- diagnosis
 
 def _levels(p):
     """INT8 softmax output level 0..255 of P(fall) (P = level / 256), also for FP32 probabilities (binned)."""
