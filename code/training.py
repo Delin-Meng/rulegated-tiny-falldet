@@ -17,7 +17,7 @@ def make_optimizer():
 
 
 def make_loss():
-    return keras.losses.CategoricalFocalCrossentropy()       # Keras defaults (team rule)
+    return keras.losses.CategoricalFocalCrossentropy()       # Keras defaults
 
 
 def training_setup(epochs):
@@ -74,7 +74,7 @@ def sens_spec(pred, truth):
 def evaluate(prob, y, trials, threshold=cfg.THRESHOLD):
     """Window and trial level sensitivity / specificity / G-mean (in %) from P(fall) per window.
     A trial is an accident if any of its windows has P(fall) >= threshold.
-    Returns (per-trial table in the team's format, metrics dict)."""
+    Returns (per-trial table, metrics dict)."""
     pred = prob >= threshold
     rows, start = [], 0
     for t in trials:
@@ -135,7 +135,7 @@ def trial_roc(prob, trials, fpr_grid=cfg.ROC_FPR_GRID):
     return np.interp(fpr_grid, fpr, tpr), float(roc_auc_score(is_fall, trial_max))
 
 
-# result settings: label -> (model, threshold rule); "" is the team rule (FP32, threshold 0.5)
+# result settings: label -> (model, threshold rule); "" is (FP32, threshold 0.5)
 SETTINGS = {"": ("fp32", "fixed"), "FP32 tuned": ("fp32", "own"),
             "INT8": ("int8", "fixed"), "INT8 tuned": ("int8", "own"), "INT8 at FP32 threshold": ("int8", "fp32")}
 
