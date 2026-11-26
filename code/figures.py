@@ -520,7 +520,7 @@ def gate_ablation():
 
 
 def early_stopping():
-    """Per model: the plan's rule, early stopping within 200 epochs, and the 200-epoch main runs (thresholds tuned on
+    """Per model: the short schedule, early stopping within 200 epochs, and the 200-epoch main runs (thresholds tuned on
     the training subjects in all three), gate + INT8. Ordered by training budget: one blue ramp, light to dark."""
     fig, axes = plt.subplots(1, 2, figsize=(WIDTH_2, 2.8), sharey=True)
     drawn, order = False, None
