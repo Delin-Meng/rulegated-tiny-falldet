@@ -1,5 +1,5 @@
 """
-Files for microcontroller deployment and on-device validation (P1 item 11, P2 item 17), from the models trained on
+Files for microcontroller deployment and on-device validation, from the models trained on
 the fixed KFall split (results/<model>/, `python overall.py train`). Per model, results/mcu/<model>/:
   <model>_int8.tflite          full-INT8 model (int8 input / output), the file to load in ST Edge AI / STM32Cube.AI
   deployment.json              what the firmware needs: channel order, window / step, normalisation mean / std,
@@ -26,7 +26,7 @@ import training
 
 FIXED_SPLIT_KEY = 100        # as overall.FIXED_SPLIT_KEY
 
-README = """Model {display}: files for an MCU estimate (P1 item 11) and an on-device check (P2 item 17).
+README = """Model {display}: files for an MCU estimate and an on-device check (P2 item 17).
 
 1. Estimate without a board: ST Edge AI Developer Cloud (https://stedgeai-dc.st.com) or STM32Cube.AI / the
    stedgeai CLI.
