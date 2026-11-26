@@ -1,5 +1,5 @@
 """
-Quantization-aware training (QAT) of the recurrent baselines (P2 item 15): is their full-INT8 loss fixable?
+Quantization-aware training (QAT) of the recurrent baselines: is their full-INT8 loss fixable?
 Per saved cross-validation run of config.QAT_MODELS (given folds and seeds, default all folds x seed 0), three arms:
   qat       the trained FP32 model rebuilt with fake quantization at every tensor the INT8 graph stores (input,
             conv / dense outputs, both LSTM matrix products, gates, cell state, hidden state, logits,
