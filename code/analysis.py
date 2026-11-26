@@ -166,7 +166,7 @@ def ops_per_window(datasets, gate_ops_full):
 
 # ---- 7 ----
 def gate_detector(datasets):
-    """The gate alone decides (P1 item 6): with detector tuning, and with the filter thresholds of the main
+    """The gate alone decides: with detector tuning, and with the filter thresholds of the main
     setting (>= GATE_TRIAL_RECALL of the training fall trials kept, fewest training windows passing)."""
     rows = []
     for ds in datasets:
