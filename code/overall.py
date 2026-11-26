@@ -3,7 +3,7 @@ Single entry point for all experiments (settings in config.py, model variants in
 
   python overall.py check  [--dataset kfall|sisfall]          data self-check only
   python overall.py list                                      registered model variants
-  python overall.py train  [--models ...] [--epochs N]        fixed KFall split (team rule): per-model results
+  python overall.py train  [--models ...] [--epochs N]        fixed KFall split: per-model results
                                                               in results/<model>/ + results/comparison.csv
   python overall.py cv     [--dataset] [--models] [--seeds] [--folds] [--epochs]
                                                               k-fold x seeds, resumable -> results/cv_<dataset>/
@@ -18,10 +18,10 @@ Single entry point for all experiments (settings in config.py, model variants in
                                                               (gate, ops, MACs, sizes, misses) -> results/analysis/
   python overall.py quant  [--dataset] [--models] [--variants] float16 / weight-only / balanced-calibration / 16x8
                                                               variants of the saved cv models -> results/quantization/
-  python overall.py int8diag [--dataset] [--models] [--runs N] why full INT8 fails (saturation vs bug)
+  python overall.py int8diag [--dataset] [--models] [--runs N] diagnosis of the full-INT8 accuracy loss
                                                               -> results/quantization/diagnosis/
   python overall.py es     [--dataset] [--models] [--seeds]   early stopping (<= 200 epochs, patience 10) and the
-                                                              plan's rule (<= 10, patience 3) from the same runs
+                                                              short schedule (<= 10, patience 3) from the same runs
                                                               -> results/es_<dataset>/, results/es_plan_<dataset>/
   python overall.py prune  [--dataset] [--models] [--sparsities]   magnitude pruning + fine-tuning -> results/pruning/
   python overall.py qat    [--dataset] [--models]             quantization-aware training of the LSTMs -> results/qat/
@@ -64,7 +64,7 @@ FIXED_SPLIT_KEY = 100        # key of the held-out threshold subjects of the fix
 
 
 def load_fixed_split(subjects=None):
-    """KFall with the team's fixed test subjects (experiment_split), after the self-check; `subjects` rebuilds the
+    """KFall with the fixed test subjects (experiment_split), after the self-check; `subjects` rebuilds the
     split of a saved model ({"fit", "threshold", "test"})."""
     trials = pre.load_trials("kfall")
     check = pre.self_check(trials)
@@ -279,7 +279,7 @@ def build_parser():
     model_arg = dict(nargs="+", choices=list(models.VARIANTS), default=models.DEFAULT)
     dataset_arg = dict(choices=["kfall", "sisfall"], default="kfall")
 
-    p = sub.add_parser("train", help="fixed KFall split (team rule)")
+    p = sub.add_parser("train", help="fixed KFall split")
     p.add_argument("--models", **model_arg)
     p.add_argument("--epochs", type=int, default=cfg.EPOCHS)
     p.add_argument("--out_dir", default=None, help="default: results/")
@@ -343,7 +343,7 @@ def build_parser():
                         "activation memory, float ops), then report")
     p.set_defaults(func=cmd_quant)
 
-    p = sub.add_parser("int8diag", help="diagnosis of the full-INT8 failures (saturation vs bug)")
+    p = sub.add_parser("int8diag", help="diagnosis of the full-INT8 accuracy loss")
     p.add_argument("--dataset", **dataset_arg)
     p.add_argument("--models", nargs="+", choices=list(models.VARIANTS),
                    default=["musci2021", "cnnlstm", "tinytransformer", "tinytcn"])
@@ -351,7 +351,7 @@ def build_parser():
     p.add_argument("--windows", type=int, default=100, help="test windows per class for the tensor saturation")
     p.set_defaults(func=cmd_int8diag)
 
-    p = sub.add_parser("es", help="early stopping (<= 200 epochs, patience 10) + the plan's rule, both datasets "
+    p = sub.add_parser("es", help="early stopping (<= 200 epochs, patience 10) + the short schedule, both datasets "
                                   "(resumable)")
     p.add_argument("--dataset", **dataset_arg)
     p.add_argument("--models", nargs="+", choices=list(models.VARIANTS), default=cfg.ES_MODELS)
@@ -359,7 +359,7 @@ def build_parser():
     p.add_argument("--seeds", nargs="+", type=int, default=cfg.CV_SEEDS)
     p.add_argument("--max_epochs", type=int, default=cfg.EPOCHS)
     p.add_argument("--patience", type=int, default=cfg.ES_PATIENCE)
-    p.add_argument("--plan_epochs", type=int, default=cfg.ES_PLAN_EPOCHS, help="the plan rule's maximum epochs")
+    p.add_argument("--plan_epochs", type=int, default=cfg.ES_PLAN_EPOCHS, help="maximum epochs of the short schedule")
     p.add_argument("--plan_patience", type=int, default=cfg.ES_PLAN_PATIENCE)
     p.add_argument("--report", **report_arg)
     p.add_argument("--no_report", **no_report_arg)
