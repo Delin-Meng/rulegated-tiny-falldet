@@ -1,5 +1,5 @@
 """
-Magnitude pruning with fine-tuning (P2 item 14), from the saved cross-validation models (no training from scratch).
+Magnitude pruning with fine-tuning, from the saved cross-validation models (no training from scratch).
 Each saved run of the given models (default TinyTCN, all folds x seed 0) is pruned to every sparsity in
 config.PRUNE_SPARSITIES: layer by layer, the smallest |w| of each conv / depthwise / dense / LSTM kernel are set to
 zero (biases, normalisation, SSM parameters kept), then fine-tuned config.PRUNE_FINETUNE_EPOCHS epochs at
