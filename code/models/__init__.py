@@ -19,7 +19,7 @@ VARIANTS = {
     # "lunaperejon2019":  ("lunaperejon2019", {}, "Luna-Perejon 2019 (LSTM)"),  # official code, STM32
     # "kraft2020":        ("kraft2020", {}, "Kraft 2020 (CNN)"),                # |a| input, Nordic MCU
     # "santoyoramon2022": ("santoyoramon2022", {}, "Santoyo-Ramon 2022 (CNN)"), # 134,338 params
-    # TinyTCN size sweep (P1 item 5): channels (default 8) and number of dilated blocks (default 4: 1, 2, 4, 8)
+    # TinyTCN size sweep: channels (default 8) and number of dilated blocks (default 4: 1, 2, 4, 8)
     "tinytcn_c4":    ("tinytcn", {"channels": 4}, "TinyTCN (4 ch)"),             # 166 params
     "tinytcn_c6":    ("tinytcn", {"channels": 6}, "TinyTCN (6 ch)"),             # 296 params
     "tinytcn_c12":   ("tinytcn", {"channels": 12}, "TinyTCN (12 ch)"),           # 878 params
