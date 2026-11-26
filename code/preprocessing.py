@@ -1,5 +1,5 @@
 """
-Data preprocessing following the team's common rules (settings in config.py):
+Data preprocessing (settings in config.py):
 windowing, window labels, self-check, train/test split by subject, normalisation.
 KFall (100 Hz) is the main dataset; SisFall (200 Hz -> 100 Hz, Musci et al. temporal labels) is used
 for cross-dataset checks. Parsed raw signals are cached in results/cache/, so only the first run reads
