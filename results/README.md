@@ -4,8 +4,8 @@ This folder contains the result files behind the tables and figures of
 
 > **Kinematic Rule Gating with a Tiny Temporal Convolutional Network for Wearable Fall Detection on Microcontrollers**
 
-Every number reported in the paper can be traced to a file here and recomputed from it. If you only want the headline
-numbers, open `cv_kfall/summary.csv` and `cv_sisfall/summary.csv`.
+The numbers in the tables and figures of the paper can be traced to the files here, and the statistical tests can be
+recomputed from them. If you only want the headline numbers, open `cv_kfall/summary.csv` and `cv_sisfall/summary.csv`.
 
 ## What is in this folder
 
@@ -48,7 +48,7 @@ redistributed and have to be obtained from their authors.
 | Table XI | `sweep_tinytcn_kfall/summary.csv` | `FP32 tuned` and `Gated INT8 tuned` trial G-mean |
 | Table XII | `es_<ds>/comparison_summary.csv` | See the column key below |
 | Table XIII | `analysis/gate_recall_sweep.csv` | `kfall` rows, TinyTCN columns |
-| Table XIV | `analysis/gate_ablation.csv`, `analysis/gate_transfer.csv`, `transfer/runs.csv` | Thresholds per fold in the `Main gate` row; the "All" row; `Gate fall trials kept, test` |
+| Table XIV | `analysis/gate_ablation.csv`, `analysis/gate_transfer.csv`, `transfer/runs.csv` | Thresholds per fold in the rows where `Main gate` is `yes`; the "All" row; `Gate fall trials kept, test` |
 | Table XV | `analysis/false_alarms_by_subject.csv`, `cv_sisfall/folds.csv` | Specificity = 1 − false alarms / ADL trials, pooled per participant group |
 | Table XVI | `cv_<ds>/<ds>_f1_summary.csv` | `Gate` = no with `Setting` = FP32, and `Gate` = yes with `Setting` = INT8 |
 | Table XVII | `quantization/<ds>/all_runs.csv`, `quantization/diagnosis/<ds>_summary.csv` | `fp32` minus `weight_int8_sim`; `int8` minus `int8_balanced`; input values outside the INT8 range |
@@ -70,6 +70,9 @@ redistributed and have to be obtained from their authors.
   `Gated INT8 tuned`. Columns without `tuned` use a fixed threshold of 0.5; they are a reference setting that the
   paper does not report, labeled "FP32, threshold 0.5 (team rule)" in the F1 summaries.
 - **Windows.** An "accident window" is a fall-labeled window.
+- **Precision and F1.** `cv_<ds>/<ds>_f1_summary.csv` gives them as mean ± SD over the runs. You can recompute the
+  trial-level values of a run from its sensitivity and specificity in `all_runs.csv` and the numbers of fall and ADL
+  trials of its test fold in `data/<ds>_splits.csv`.
 - **Quantization variants.** `int8` is the full-INT8 model, `weight_int8_sim` quantizes the weights only,
   `int8_balanced` uses the class-balanced calibration set, and `int16x8` has 16-bit activations and 8-bit weights.
   Columns marked `grid 0.50-0.99` use the restricted threshold grid of Table X.
@@ -93,8 +96,44 @@ The paper tests differences at the fold level (Section III-D.5), and you can rec
 4. Holm-adjust the p-values over the seven backbones of a dataset.
 
 Two configurations are equivalent at a margin if the 90 % confidence interval of the corrected mean difference lies
-inside it. The quantization-aware-training comparisons use the five runs with seed 0; their tests are stored in
-`qat/<ds>/paired_tests.csv`.
+inside it. The p-values in the notes of Tables X and XVII follow the same four steps, applied to the `int8` rows of
+`quantization/<ds>/all_runs.csv`. The quantization-aware-training comparisons use the five runs with seed 0; their
+tests are stored in `qat/<ds>/paired_tests.csv`.
+
+The steps in Python, here for the p column of Table VII on KFall:
+
+```python
+import numpy as np
+import pandas as pd
+from scipy import stats
+
+runs = pd.read_csv("cv_kfall/all_runs.csv", encoding="utf-8-sig")
+
+def fold_level_p(runs, a, b):
+    """Corrected t-test on the five fold-level differences of columns a and b: one p-value per model."""
+    p = {}
+    for model, g in runs.groupby("model"):
+        d = (g[a] - g[b]).groupby(g["fold"]).mean().to_numpy()      # steps 1 and 2
+        var = d.var(ddof=1)
+        if var == 0:
+            p[model] = 1.0 if d.mean() == 0 else 0.0
+        else:
+            t = d.mean() / np.sqrt((1 / 5 + 1 / 4) * var)             # step 3
+            p[model] = 2 * stats.t.sf(abs(t), 4)
+    return pd.Series(p)
+
+def holm(p):
+    """Holm-adjusted p-values."""
+    adjusted, running = {}, 0.0
+    for rank, model in enumerate(p.sort_values().index):
+        running = max(running, (len(p) - rank) * p[model])
+        adjusted[model] = min(1.0, running)
+    return pd.Series(adjusted)
+
+print(holm(fold_level_p(runs, "FP32 tuned Trial G-mean", "INT8 tuned Trial G-mean")).round(3))   # step 4
+```
+
+For a 90 % confidence interval, use `d.mean() ± stats.t.ppf(0.95, 4) * np.sqrt((1 / 5 + 1 / 4) * var)`.
 
 ## Regenerating the files
 
@@ -103,13 +142,13 @@ cd code
 bash run_all.sh             # main experiments: cv_<ds>/, analysis/, transfer/, the backbone folders
 bash run_extra.sh           # follow-up studies: quantization/, qat/, es_<ds>/, sweep_tinytcn_kfall/,
                             # and transfer/ for all seven backbones
-python overall.py f1        # precision and F1 summaries
 python overall.py splits    # data/<ds>_splits.csv
 python overall.py figures   # figures/
 ```
 
 The scripts write to `code/results/`, and the files here keep the same relative paths. Training does not use
-deterministic TensorFlow kernels, so a rerun gives slightly different numbers.
+deterministic TensorFlow kernels, so a rerun gives slightly different numbers. The precision and F1 summaries are
+derived from the per-run files as described under "How to read the files".
 
 The on-device results in `MCU/` were measured by uploading the `<model>_int8.tflite` files to the
 [ST Edge AI Developer Cloud](https://stedgeai-dc.st.com) (ST Edge AI Core 4.1.0, balanced optimization).
