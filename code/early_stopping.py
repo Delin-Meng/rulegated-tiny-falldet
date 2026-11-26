@@ -1,5 +1,5 @@
 """
-Early stopping vs the fixed 200-epoch protocol (review item 15), KFall, k folds x 1 seed.
+Early stopping vs the fixed 200-epoch protocol, KFall, k folds x 1 seed.
 In each fold, config.ES_VAL_FRACTION of the training subjects are held out as a validation set (never the test
 subjects). One training run per model and fold records two weight sets on the same trajectory:
   - early stopping: the weights with the lowest validation loss up to the epoch where early stopping
@@ -8,13 +8,13 @@ subjects). One training run per model and fold records two weight sets on the sa
 Both are evaluated on the fold's test subjects with all settings of training.all_metrics (thresholds and gate tuned
 on the reduced training set). Runs are resumable; output in results/early_stopping/.
 
-Early stopping on both datasets (P1 item 8), run_es() / report_es(): k folds x seeds, models config.ES_MODELS.
+Early stopping on both datasets, run_es() / report_es(): k folds x seeds, models config.ES_MODELS.
 Validation = config.THRESHOLD_VAL_FRACTION of each fold's training subjects (preprocessing.threshold_subjects, the
 same subjects as THRESHOLD_PROTOCOL "validation"); training on the rest. One training run per (model, fold, seed)
 gives two early-stopping rules, both keeping the weights with the lowest validation loss:
   "es"    at most config.EPOCHS epochs, stopped after config.ES_PATIENCE epochs without a lower validation loss
           (the training run itself stops there)         -> results/es_<dataset>/runs/
-  "plan"  the plan's rule: at most config.ES_PLAN_EPOCHS epochs, patience config.ES_PLAN_PATIENCE, read off the same
+  "plan"  the short schedule: at most config.ES_PLAN_EPOCHS epochs, patience config.ES_PLAN_PATIENCE, read off the same
           run (with the same seed its first epochs are those of a separate short run)  -> results/es_plan_<dataset>/runs/
 Saved like cross-validation runs (thresholds tuned on the validation subjects) plus the predictions on the training
 (fit) windows. report_es(): the usual cross-validation report of each rule, and paired comparisons (incl. TOST) of
@@ -140,7 +140,7 @@ RULES = {"es": "early stopping", "plan": "plan rule"}
 
 
 def rule_dir(dataset, rule):
-    """results/es_<dataset>/ (early stopping within config.EPOCHS) or results/es_plan_<dataset>/ (the plan's rule)."""
+    """results/es_<dataset>/ (early stopping within config.EPOCHS) or results/es_plan_<dataset>/ (the short schedule)."""
     return cfg.RESULTS_DIR / (f"es_{dataset}" if rule == "es" else f"es_plan_{dataset}")
 
 
@@ -201,7 +201,7 @@ def run_es(dataset, names, folds, seeds, max_epochs=cfg.EPOCHS, patience=cfg.ES_
         meta = {"dataset": dataset, "model": name, "fold": fold, "seed": seed}
         for rule, monitor in monitors.items():
             budget, pat = rules[rule]
-            used = min(monitor.stop_epoch, trained)          # epochs this rule trains (the plan rule's own run)
+            used = min(monitor.stop_epoch, trained)          # epochs this rule trains (the short schedule's own run)
             model.set_weights(monitor.weights)
             save_rule_run(rule_dir(dataset, rule), meta, model, data, monitor, budget, pat, used,
                           minutes * used / trained, history)
