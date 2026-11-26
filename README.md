@@ -248,6 +248,7 @@ All settings live in [code/config.py](code/config.py). Some useful ones:
 - `DETERMINISTIC`: set to `True` for bit-identical reruns with the same seed (slower). The runs reported in the
   paper did not use this mode.
 
+<!--
 ## Citation
 
 If you use this code or these results, please cite:
@@ -268,3 +269,4 @@ Please also cite the datasets you use:
 - A. Sucerquia, J. D. López, J. F. Vargas-Bonilla. *SisFall: A Fall and Movement Dataset.* Sensors 17(1):198, 2017.
 - M. Musci et al. *Online Fall Detection Using Recurrent Neural Networks on Smart Wearable Devices.*
   IEEE Transactions on Emerging Topics in Computing 9(3):1276–1289, 2021.
+-->
